@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import { ApiPlant } from "../types/apiPlant";
 import { addPlantToDb } from "./addPlantToDb";
 import { getPlantsData } from "./getPlantsData";
@@ -12,7 +11,6 @@ export const getPlants = async () => {
 
   try {
     for await (const { apiPlant, page } of getAllPlants()) {
-      console.log(apiPlant);
       tryToAddPlantToDb(apiPlant);
 
       lastPlantId = apiPlant.id;
@@ -24,16 +22,23 @@ export const getPlants = async () => {
       lastPage: lastPage,
       lastPlantId: lastPlantId,
     });
-    helpfulVariables.findOneAndReplace(
+
+    await helpfulVariables.findOneAndReplace(
       { name: "Last Update of Plants" },
-      newHelpfulVariables
+      newHelpfulVariables,
+      { upsert: true }
     );
   }
 };
 
 async function* getAllPlants(): AsyncIterable<PlantData> {
   let isNextPage = true;
-  let page = 1;
+  const variables = await helpfulVariables.findOne({
+    name: "Last Update of Plants",
+  });
+
+  let page = variables?.lastPage || 1;
+  let lastId = variables?.lastPlantId || 0;
 
   while (isNextPage === true) {
     const data = await getPlantsData(page);
@@ -41,8 +46,9 @@ async function* getAllPlants(): AsyncIterable<PlantData> {
       page += 1;
 
       for (const apiPlant of data["data"]) {
-        console.log(data["data"]);
-        yield { apiPlant, page };
+        if (apiPlant.id > lastId) {
+          yield { apiPlant, page };
+        }
       }
     } else {
       isNextPage = false;
