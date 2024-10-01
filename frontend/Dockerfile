@@ -72,3 +72,5 @@ EXPOSE 3000
 
 # Run the application.
 CMD yarn start
+
+
