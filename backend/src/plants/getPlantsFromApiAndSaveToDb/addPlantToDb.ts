@@ -1,4 +1,4 @@
-import { ApiPlant } from "../types/apiPlant";
+import { ApiPlant } from "../../types/apiPlant";
 import { createPlant } from "./plantMapper";
 
 export const addPlantToDb = async (apiPlant: ApiPlant) => {

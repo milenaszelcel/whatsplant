@@ -1,7 +1,7 @@
-import { ApiPlant } from "../types/apiPlant";
+import { ApiPlant } from "../../types/apiPlant";
 import { addPlantToDb } from "./addPlantToDb";
 import { getPlantsData } from "./getPlantsData";
-import helpfulVariables from "./schemas/helpfulVariablesSchema";
+import helpfulVariables from "../../schemas/helpfulVariablesSchema";
 
 type PlantData = { apiPlant: ApiPlant; page: number };
 

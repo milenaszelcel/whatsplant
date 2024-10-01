@@ -3,6 +3,7 @@ import { Schema, model } from "mongoose";
 interface IPlant {
   id: number;
   commonName: string;
+  scientificName: string;
   otherName: string;
   watering: string;
   sunlight: string;
@@ -16,6 +17,10 @@ const plantSchema = new Schema<IPlant>({
     unique: true,
   },
   commonName: {
+    type: String,
+    required: true,
+  },
+  scientificName: {
     type: String,
     required: true,
     unique: true,
@@ -42,5 +47,10 @@ const plantSchema = new Schema<IPlant>({
   },
 });
 
+plantSchema.index({
+  scientificName: "text",
+  commonName: "text",
+  otherName: "text",
+});
 const Plant = model<IPlant>("Plants", plantSchema);
 export default Plant;

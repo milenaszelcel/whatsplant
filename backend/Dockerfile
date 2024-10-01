@@ -21,6 +21,7 @@ apt-get update
 apt-get install -y --no-install-recommends git
 EOF
 
+
 RUN <<EOF
 useradd -s /bin/bash -m vscode
 groupadd docker
@@ -29,3 +30,4 @@ EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
 CMD [ "npm", "run", "dev" ]
+

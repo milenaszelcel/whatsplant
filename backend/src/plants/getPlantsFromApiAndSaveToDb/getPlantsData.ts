@@ -9,6 +9,6 @@ export const getPlantsData = async (page: number) => {
   }
 
   const response = await axios.get(`${URL}&page=${page}`);
-  console.log(JSON.stringify(response.data["data"]));
+
   return response.data;
 };
