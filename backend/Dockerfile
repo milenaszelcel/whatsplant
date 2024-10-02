@@ -6,14 +6,14 @@ FROM node:lts-buster-slim AS development
 WORKDIR /usr/src/app
 
 COPY package.json /usr/src/app/package.json
-COPY package-lock.json /usr/src/app/package-lock.json
-RUN npm ci
+COPY yarn.lock /usr/src/app/yarn.lock
+RUN yarn install --frozen-lockfile
 
 COPY . /usr/src/app
 
 EXPOSE 3001
 
-CMD [ "npm", "run", "dev" ]
+CMD [ "yarn", "run", "dev" ]
 
 FROM development as dev-envs
 RUN <<EOF
@@ -29,5 +29,5 @@ usermod -aG docker vscode
 EOF
 # install Docker tools (cli, buildx, compose)
 COPY --from=gloursdocker/docker / /
-CMD [ "npm", "run", "dev" ]
+CMD [ "yarn", "run", "dev" ]
 

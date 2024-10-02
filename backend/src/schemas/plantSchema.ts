@@ -1,16 +1,7 @@
 import { Schema, model } from "mongoose";
+import { Plant } from "contract/plant";
 
-interface IPlant {
-  id: number;
-  commonName: string;
-  scientificName: string;
-  otherName: string;
-  watering: string;
-  sunlight: string;
-  img: string;
-}
-
-const plantSchema = new Schema<IPlant>({
+const plantSchema = new Schema<Plant>({
   id: {
     type: Number,
     required: true,
@@ -52,5 +43,5 @@ plantSchema.index({
   commonName: "text",
   otherName: "text",
 });
-const Plant = model<IPlant>("Plants", plantSchema);
+const Plant = model<Plant>("Plants", plantSchema);
 export default Plant;
