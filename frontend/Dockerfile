@@ -19,13 +19,13 @@ WORKDIR /usr/src/app
 ################################################################################
 # Create a stage for installing production dependecies.
 FROM base as deps
-
+COPY ../contract /usr/src/contract
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.yarn to speed up subsequent builds.
 # Leverage bind mounts to package.json and yarn.lock to avoid having to copy them
 # into this layer.
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=yarn.lock,target=yarn.lock \
+RUN --mount=type=bind,source=frontend/package.json,target=package.json \
+    --mount=type=bind,source=frontend/yarn.lock,target=yarn.lock \
     --mount=type=cache,target=/root/.yarn \
     yarn install --production --frozen-lockfile
 
@@ -35,13 +35,15 @@ FROM deps as build
 
 # Download additional development dependencies before building, as some projects require
 # "devDependencies" to be installed to build. If you don't need this, remove this step.
-RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=yarn.lock,target=yarn.lock \
+RUN --mount=type=bind,source=frontend/package.json,target=package.json \
+    --mount=type=bind,source=frontend/yarn.lock,target=yarn.lock \
     --mount=type=cache,target=/root/.yarn \
     yarn install --frozen-lockfile
 
 # Copy the rest of the source files into the image.
-COPY . .
+COPY ./frontend .
+
+
 # Run the build script.
 RUN yarn run build
 
@@ -58,7 +60,8 @@ ENV NODE_ENV production
 USER node
 
 # Copy package.json so that package manager commands can be used.
-COPY package.json .
+COPY ./frontend/package.json .
+COPY ../contract /usr/src/contract
 
 # Copy the production dependencies from the deps stage and also
 # the built application from the build stage into the image.

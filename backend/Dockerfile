@@ -5,11 +5,13 @@ FROM node:lts-buster-slim AS development
 # Create app directory
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app/package.json
-COPY yarn.lock /usr/src/app/yarn.lock
+COPY ./backend/package.json /usr/src/app/package.json
+COPY ./backend/yarn.lock /usr/src/app/yarn.lock
+COPY ../contract /usr/src/contract
+
 RUN yarn install --frozen-lockfile
 
-COPY . /usr/src/app
+COPY ./backend /usr/src/app
 
 EXPOSE 3001
 
