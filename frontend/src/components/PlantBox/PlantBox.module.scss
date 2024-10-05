@@ -1,25 +1,25 @@
 .plantImage {
-  width: 20vw;
-  height: 20vw;
+  width: 18vw;
+  height: 18vw;
   object-fit: fill;
   border-radius: 20px;
 }
 
 .plantBox {
   background-color: white;
-  padding: 16px;
+  padding: 32px;
   border-radius: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  width: 40vw;
+  gap: 32px;
 }
 
 .commonName {
   font-size: 1.8rem;
-  font-weight: 600;
 }
 
 .scientificName {
   color: #7a976f;
   font-size: 1.2rem;
-  font-weight: 600;
 }

@@ -8,17 +8,13 @@ type Props = {
 export const PlantBox = ({ plant }: Props) => {
   return (
     <div className={styles.plantBox}>
-      {plant.img ? (
-        <img
-          src={
-            plant.img.includes("upgrade_access.jpg")
-              ? "../../../public/no-image.svg"
-              : plant.img
-          }
-          alt={plant.commonName}
-          className={styles.plantImage}
-        />
-      ) : null}
+      <img
+        src={
+          plant.img?.includes("upgrade_access.jpg") ? "no-image.svg" : plant.img
+        }
+        alt={plant.commonName}
+        className={styles.plantImage}
+      />
 
       <div>
         <div className={styles.commonName}>{plant.commonName}</div>

@@ -4,8 +4,36 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 48px;
 }
 
 .logo {
-  width: 12vw;
+  width: 14vw;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 1.4rem;
+  text-underline-offset: 0.4rem;
+}
+
+.navLink.active {
+  text-decoration: underline;
+}
+.navigationMenu {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .hamburgerMenu {
+    display: none;
+  }
+  .navigationMenu {
+    display: flex;
+    gap: 48px;
+  }
+  .headerContainer {
+    justify-content: start;
+  }
 }
