@@ -1,10 +1,8 @@
-import { Header } from "../Header/Header";
 import styles from "./About.module.scss";
 
 export const About = () => {
   return (
     <div>
-      <Header />
       <div className={styles.wiersz}>
         <div className={styles.title}>Wiersz o kici</div>
         <div className={styles.punia}>

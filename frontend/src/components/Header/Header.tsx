@@ -34,6 +34,14 @@ export const Header = () => {
         >
           About
         </NavLink>
+        <NavLink
+          to="/signin"
+          className={({ isActive }) =>
+            classNames(styles.navLink, { [styles.active]: isActive })
+          }
+        >
+          Sign In
+        </NavLink>
       </div>
 
       <div className={styles.hamburgerMenu}>
