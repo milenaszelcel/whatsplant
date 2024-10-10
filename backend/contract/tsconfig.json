@@ -10,10 +10,6 @@
     "moduleResolution": "Node",
     "sourceMap": true,
     "inlineSourceMap": false,
-    "outDir": "build",
-    "baseUrl": ".",
-    "paths": {
-      "*": ["node_modules/*"]
-    }
+    "outDir": "build"
   }
 }

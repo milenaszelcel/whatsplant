@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { Plant } from "contract/plant";
+import { Plant } from "../../contract/src/plant";
 
 const plantSchema = new Schema<Plant>({
   id: {

@@ -1,31 +1,24 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Header.module.scss";
 import classNames from "classnames";
+import { Logout } from "../User/Logout/Logout";
 
 export const Header = () => {
   return (
     <div className={styles.headerContainer}>
-      <NavLink to="/">
-        <img src="logo.svg" alt="logo" className={styles.logo} />
-      </NavLink>
       <div className={styles.navigationMenu}>
+        <NavLink to="/">
+          <img src="logo.svg" alt="logo" className={styles.logo} />
+        </NavLink>
         <NavLink
           to="/"
-          // className={styles.navLink}
           className={({ isActive }) =>
             classNames(styles.navLink, { [styles.active]: isActive })
           }
         >
           Find a plant
         </NavLink>
-        <NavLink
-          to="/myGarden"
-          className={({ isActive }) =>
-            classNames(styles.navLink, { [styles.active]: isActive })
-          }
-        >
-          My Garden
-        </NavLink>
+
         <NavLink
           to="/about"
           className={({ isActive }) =>
@@ -34,22 +27,30 @@ export const Header = () => {
         >
           About
         </NavLink>
+      </div>
+
+      {document.cookie ? (
+        <div className={styles.rightMenu}>
+          <NavLink
+            to="/myGarden"
+            className={({ isActive }) =>
+              classNames(styles.navLink, { [styles.active]: isActive })
+            }
+          >
+            My Garden
+          </NavLink>
+          <Logout />
+        </div>
+      ) : (
         <NavLink
-          to="/signin"
+          to="/Login"
           className={({ isActive }) =>
             classNames(styles.navLink, { [styles.active]: isActive })
           }
         >
-          Sign In
+          Login
         </NavLink>
-      </div>
-
-      <div className={styles.hamburgerMenu}>
-        <NavLink to="/myGarden">
-          <img src="garden.svg" alt="garden" />
-        </NavLink>
-        <button></button>
-      </div>
+      )}
     </div>
   );
 };

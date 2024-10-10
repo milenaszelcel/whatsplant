@@ -20,3 +20,6 @@ const gardenSchema = new Schema({
     type: Array<ObjectId>,
   },
 });
+
+const Garden = model("Gardens", gardenSchema);
+export default Garden;

@@ -12,21 +12,42 @@ const validateSchema = Joi.object<ApiPlant>({
   scientific_name: Joi.array().items(Joi.string()).required(),
   other_name: Joi.array().items(Joi.string()).required(),
   watering: Joi.string()
+    .insensitive()
+    .trim()
     .valid("frequent", "average", "minimum", "none")
+    .lowercase()
     .required(),
   sunlight: Joi.array()
     .items(
-      Joi.string().valid(
-        "full_shade",
-        "part_shade",
-        "sun-part_shade",
-        "full_sun"
-      )
+      Joi.string()
+        .insensitive()
+        .trim()
+        .valid(
+          "full shade",
+          "part shade",
+          "sun-part shade",
+          "full sun",
+          "filtered shade",
+          "part sun/part shade",
+          "sun",
+          "sheltered",
+          "deep shade",
+          "partial shade",
+          "partial sun shade",
+          "deciduous shade (spring sun)",
+          "shade",
+          "full sun only if soil kept moist",
+          "full sun partial sun"
+        )
+        .lowercase()
     )
     .required(),
   default_image: Joi.object<ApiPlant["default_image"]>({
     original_url: Joi.string().required(),
-  }),
+  })
+    .unknown()
+    .empty(null)
+    .allow(null),
 })
   .unknown()
   .required();
@@ -48,6 +69,7 @@ export const getPlants = async () => {
       lastPage: lastPage,
       lastPlantId: lastPlantId,
     });
+    console.error(error);
 
     await helpfulVariables.findOneAndReplace(
       { name: "Last Update of Plants" },
@@ -73,6 +95,7 @@ async function* getAllPlants(): AsyncIterable<PlantData> {
 
       for (const item of data["data"]) {
         const apiPlant = await validateSchema.validateAsync(item);
+        console.log(apiPlant);
         if (apiPlant.id > lastId) {
           yield { apiPlant, page };
         }

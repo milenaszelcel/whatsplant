@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import { getPlants } from "./plants/getPlantsFromApiAndSaveToDb/getPlants";
 import * as db from "./db/connect";
 import * as plants from "./plants/index";
+import * as users from "./users/index";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -11,7 +13,19 @@ const app: Express = express();
 const port = process.env.PORT || 3001;
 
 db.connect();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+app.use(express.json());
+app.use(cookieParser());
+
+app.use("/users", users.router);
+
+app.use("/plants", plants.router);
+
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Serverdfdf");
 });
@@ -20,8 +34,6 @@ app.get("/getPlants", async (req: Request, res: Response) => {
   await getPlants();
   res.send("Wyslano");
 });
-
-app.use("/plants", plants.router);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);

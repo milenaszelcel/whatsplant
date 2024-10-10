@@ -1,12 +1,12 @@
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
-  user_id: {
-    type: Number,
+  id: {
+    type: String,
     unique: true,
     required: true,
   },
-  username: {
+  email: {
     type: String,
     unique: true,
     required: true,
@@ -16,3 +16,6 @@ const userSchema = new Schema({
     required: true,
   },
 });
+
+const User = model("Users", userSchema);
+export default User;

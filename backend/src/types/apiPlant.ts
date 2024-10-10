@@ -4,6 +4,22 @@ export type ApiPlant = {
   scientific_name: string[];
   other_name: string[];
   watering: "frequent" | "average" | "minimum" | "none";
-  sunlight: Array<"full_shade" | "part_shade" | "sun-part_shade" | "full_sun">;
+  sunlight: Array<
+    | "full_shade"
+    | "part_shade"
+    | "sun-part_shade"
+    | "full_sun"
+    | "filtered shade"
+    | "part sun/part shade"
+    | "sun"
+    | "sheltered"
+    | "deep shade"
+    | "partial shade"
+    | "partial sun shade"
+    | "deciduous shade (spring sun)"
+    | "shade"
+    | "full sun only if soil kept moist"
+    | "full sun partial sun"
+  >;
   default_image?: { original_url: string };
 };

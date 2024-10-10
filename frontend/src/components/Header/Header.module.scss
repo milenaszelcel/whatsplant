@@ -21,19 +21,17 @@
 .navLink.active {
   text-decoration: underline;
 }
+
 .navigationMenu {
-  display: none;
+  display: flex;
+  gap: 48px;
+
+  align-items: center;
 }
 
-@media (min-width: 992px) {
-  .hamburgerMenu {
-    display: none;
-  }
-  .navigationMenu {
-    display: flex;
-    gap: 48px;
-  }
-  .headerContainer {
-    justify-content: start;
-  }
+.rightMenu {
+  display: flex;
+
+  gap: 48px;
+  align-items: center;
 }
