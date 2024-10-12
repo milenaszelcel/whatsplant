@@ -37,7 +37,8 @@ const validateSchema = Joi.object<ApiPlant>({
           "deciduous shade (spring sun)",
           "shade",
           "full sun only if soil kept moist",
-          "full sun partial sun"
+          "full sun partial sun",
+          "Full sun Partial sun Shade"
         )
         .lowercase()
     )

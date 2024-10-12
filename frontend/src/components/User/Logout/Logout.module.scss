@@ -2,7 +2,13 @@
   background-color: transparent;
   border: none;
   color: white;
+  padding: 4px;
 }
 .logoutIcon {
   font-size: 1.8rem;
+}
+.logoutButton:hover {
+  background-color: #7a976f;
+  border-radius: 10px;
+  cursor: pointer;
 }

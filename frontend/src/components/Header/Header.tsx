@@ -39,17 +39,29 @@ export const Header = () => {
           >
             My Garden
           </NavLink>
+          <hr className={styles.line} />
           <Logout />
         </div>
       ) : (
-        <NavLink
-          to="/Login"
-          className={({ isActive }) =>
-            classNames(styles.navLink, { [styles.active]: isActive })
-          }
-        >
-          Login
-        </NavLink>
+        <div className={styles.rightMenu}>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              classNames(styles.navLink, { [styles.active]: isActive })
+            }
+          >
+            Login
+          </NavLink>
+          <hr className={styles.line} />
+          <NavLink
+            to="/signin"
+            className={({ isActive }) =>
+              classNames(styles.navLink, { [styles.active]: isActive })
+            }
+          >
+            Sign in
+          </NavLink>
+        </div>
       )}
     </div>
   );

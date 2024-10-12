@@ -1,10 +1,10 @@
 import { FormikValues } from "formik";
 import { registerValidationSchema } from "contract/schemas/registerSchema";
 import axios from "axios";
-import { UserForm } from "../UserForm";
+import { UserForm } from "../UserForm/UserForm";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { error } from "console";
+import styles from "../LoginRegistration.module.scss";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -35,10 +35,10 @@ export const Register = () => {
     }
   };
   return (
-    <>
-      <div>Register</div>
-      <UserForm onSubmit={onSubmit} />
+    <div className={styles.loginContainer}>
+      <div className={styles.loginTitle}>Register</div>
+      <UserForm onSubmit={onSubmit} buttonValue="Sign in" />
       {errorMessage}
-    </>
+    </div>
   );
 };

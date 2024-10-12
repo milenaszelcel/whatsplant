@@ -20,6 +20,7 @@ export type ApiPlant = {
     | "shade"
     | "full sun only if soil kept moist"
     | "full sun partial sun"
+    | "Full sun Partial sun Shade"
   >;
   default_image?: { original_url: string };
 };

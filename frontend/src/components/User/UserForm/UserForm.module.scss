@@ -1,0 +1,39 @@
+@import "../../../css/vars.scss";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 30%;
+}
+
+.field {
+  padding: 16px;
+  border-radius: 20px;
+  border-color: $color-base;
+  font-size: 1rem;
+}
+
+.formItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.submitButton {
+  background-color: #97ae8e;
+
+  padding: 16px;
+  color: white;
+  border-radius: 20px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 800;
+}
+.submitButton:hover {
+  background-color: $color-base;
+}
+
+.label {
+  font-size: 1rem;
+}

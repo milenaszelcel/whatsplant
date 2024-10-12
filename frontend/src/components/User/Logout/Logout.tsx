@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import LogoutIcon from "@mui/icons-material/Logout";
+
 import styles from "./Logout.module.scss";
 import classNames from "classnames";
 

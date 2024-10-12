@@ -4,11 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 48px;
 }
 
 .logo {
-  width: 14vw;
+  width: 12vw;
 }
 
 .navLink {
@@ -16,22 +15,35 @@
   text-decoration: none;
   font-size: 1.4rem;
   text-underline-offset: 0.4rem;
+  padding: 16px 8px;
 }
 
-.navLink.active {
+.navLink.active,
+.navLink:hover {
   text-decoration: underline;
 }
 
 .navigationMenu {
   display: flex;
-  gap: 48px;
+  gap: 32px;
 
   align-items: center;
 }
 
 .rightMenu {
   display: flex;
+  background-color: #97ae8e;
+  padding: 8px 16px;
 
-  gap: 48px;
+  border-radius: 20px;
+  gap: 16px;
   align-items: center;
+  justify-content: center;
+}
+
+.line {
+  height: 2vw;
+  color: white;
+
+  border: 1px solid white;
 }

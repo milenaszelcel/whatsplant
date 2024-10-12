@@ -1,9 +1,10 @@
 import { registerValidationSchema } from "contract/schemas/registerSchema";
-import { UserForm } from "../UserForm";
+import { UserForm } from "../UserForm/UserForm";
 import { FormikValues } from "formik";
 import axios from "axios";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import styles from "../LoginRegistration.module.scss";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -34,12 +35,16 @@ export const Login = () => {
   };
 
   return (
-    <>
-      <div>Login to your account</div>
-      <UserForm onSubmit={onSubmit} />
+    <div className={styles.loginContainer}>
+      <div className={styles.loginTitle}>Login </div>
+      <UserForm onSubmit={onSubmit} buttonValue="Login" />
       {errorMessage}
-      <div>Don't have an account? Register below</div>
-      <NavLink to="/signin">Sign In</NavLink>
-    </>
+      <div className={styles.text}>
+        <div>Don't have an account? Register below</div>
+        <NavLink to="/signin" className={styles.siginRedirection}>
+          Sign In
+        </NavLink>
+      </div>
+    </div>
   );
 };

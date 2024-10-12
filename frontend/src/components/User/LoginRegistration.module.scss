@@ -1,0 +1,23 @@
+@import "../../css/vars.scss";
+
+.loginContainer {
+  display: flex;
+
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 64px;
+  color: $color-base;
+  gap: 32px;
+  height: 100vh;
+}
+.loginTitle {
+  font-size: 2rem;
+}
+.siginRedirection {
+  font-size: 1rem;
+  color: $color-base;
+}
+.text {
+  text-align: center;
+}
