@@ -1,7 +1,9 @@
+import { AddGarden } from "../AddGarden/AddGarden";
+
 export const MyGarden = () => {
   return (
     <div>
-      <div>W moim ogrudecku</div>
+      <AddGarden />
     </div>
   );
 };

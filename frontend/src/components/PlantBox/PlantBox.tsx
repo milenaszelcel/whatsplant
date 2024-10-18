@@ -1,6 +1,8 @@
 import { Plant } from "contract/plant";
 import styles from "./PlantBox.module.scss";
 
+import { AddToGardenButton } from "../Buttons/AddToGardenButton/AddToGardenButton";
+
 type Props = {
   plant: Plant;
 };
@@ -20,6 +22,7 @@ export const PlantBox = ({ plant }: Props) => {
         <div className={styles.commonName}>{plant.commonName}</div>
         <div className={styles.scientificName}>{plant.scientificName}</div>
       </div>
+      <AddToGardenButton plantId={plant.id} />
     </div>
   );
 };

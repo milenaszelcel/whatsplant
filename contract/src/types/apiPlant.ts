@@ -3,7 +3,12 @@ export type ApiPlant = {
   common_name: string;
   scientific_name: string[];
   other_name: string[];
-  watering: "frequent" | "average" | "minimum" | "none";
+  watering:
+    | "frequent"
+    | "average"
+    | "minimum"
+    | "none"
+    | "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry";
   sunlight: Array<
     | "full_shade"
     | "part_shade"
@@ -21,6 +26,7 @@ export type ApiPlant = {
     | "full sun only if soil kept moist"
     | "full sun partial sun"
     | "Full sun Partial sun Shade"
+    | "Upgrade Plans To Premium/Supreme - https://perenual.com/subscription-api-pricing. I'm sorry"
   >;
   default_image?: { original_url: string };
 };

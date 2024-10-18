@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import LogoutIcon from "@mui/icons-material/Logout";
 import styles from "./Logout.module.scss";
 import classNames from "classnames";
 
@@ -23,11 +23,9 @@ export const Logout = () => {
   };
   return (
     <button onClick={onClick} className={styles.logoutButton}>
-      <span
+      <LogoutIcon
         className={classNames("material-symbols-outlined", styles.logoutIcon)}
-      >
-        logout
-      </span>
+      />
     </button>
   );
 };

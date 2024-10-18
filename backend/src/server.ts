@@ -4,6 +4,7 @@ import { getPlants } from "./plants/getPlantsFromApiAndSaveToDb/getPlants";
 import * as db from "./db/connect";
 import * as plants from "./plants/index";
 import * as users from "./users/index";
+import * as garden from "./garden/index";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
@@ -25,6 +26,8 @@ app.use(cookieParser());
 app.use("/users", users.router);
 
 app.use("/plants", plants.router);
+
+app.use("/garden", garden.router);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Serverdfdf");

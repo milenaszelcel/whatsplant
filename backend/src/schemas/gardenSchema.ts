@@ -1,13 +1,8 @@
 import { model, Schema, ObjectId } from "mongoose";
 
 const gardenSchema = new Schema({
-  id: {
-    type: Number,
-    unique: true,
-    required: true,
-  },
-  user_id: {
-    type: Number,
+  userId: {
+    type: String,
     unique: true,
     required: true,
   },
@@ -16,7 +11,7 @@ const gardenSchema = new Schema({
     unique: true,
     required: false,
   },
-  plants_id: {
+  plantsId: {
     type: Array<ObjectId>,
   },
 });

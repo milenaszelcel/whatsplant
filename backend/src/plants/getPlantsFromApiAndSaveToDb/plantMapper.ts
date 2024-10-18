@@ -1,4 +1,4 @@
-import { ApiPlant } from "../../types/apiPlant";
+import { ApiPlant } from "../../../contract/src/types/apiPlant";
 import Plant from "../../schemas/plantSchema";
 
 export const createPlant = (apiPlant: ApiPlant) => {

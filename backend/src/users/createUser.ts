@@ -3,6 +3,7 @@ import { registerValidationSchema } from "../../contract/src/schemas/registerSch
 import bcrypt from "bcryptjs";
 import User from "../schemas/userSchema";
 import { randomUUID } from "crypto";
+import jwt from "jsonwebtoken";
 
 export const createUser = async (req: Request, res: Response) => {
   const validatedUser = await registerValidationSchema.validateAsync(req.body);
@@ -15,8 +16,11 @@ export const createUser = async (req: Request, res: Response) => {
       password: hashed,
     });
     await newUser.save();
+    const token = jwt.sign({ userId: newUser.id }, "SECRET_KEY", {
+      expiresIn: "1h",
+    });
     res
-      .cookie("cookie", "logged in", {
+      .cookie("cookie", token, {
         httpOnly: false,
         secure: false,
       })
