@@ -1,7 +1,7 @@
-import { Plant } from "contract/plant";
+import { Plant } from "../../contract/src/plant";
 import styles from "./PlantBox.module.scss";
 
-import { AddToGardenButton } from "../Buttons/AddToGardenButton/AddToGardenButton";
+import { AddToGardenButton } from "../Gardens/AddToGardenButton/AddToGardenButton";
 
 type Props = {
   plant: Plant;
@@ -22,7 +22,11 @@ export const PlantBox = ({ plant }: Props) => {
         <div className={styles.commonName}>{plant.commonName}</div>
         <div className={styles.scientificName}>{plant.scientificName}</div>
       </div>
-      <AddToGardenButton plantId={plant.id} />
+      <div className={styles.addToGarden}>
+        {document.cookie.includes("token") ? (
+          <AddToGardenButton plantId={plant.id} />
+        ) : null}
+      </div>
     </div>
   );
 };

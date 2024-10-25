@@ -1,18 +1,17 @@
-import { model, Schema, ObjectId } from "mongoose";
+import { garden } from "../../contract/src/types/garden";
+import { model, Schema } from "mongoose";
 
-const gardenSchema = new Schema({
+const gardenSchema = new Schema<garden>({
   userId: {
     type: String,
-    unique: true,
     required: true,
   },
   name: {
     type: String,
-    unique: true,
     required: false,
   },
   plantsId: {
-    type: Array<ObjectId>,
+    type: [Number],
   },
 });
 

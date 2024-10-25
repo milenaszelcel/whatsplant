@@ -1,4 +1,4 @@
-import { registerValidationSchema } from "contract/schemas/registerSchema";
+import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import { UserForm } from "../UserForm/UserForm";
 import { FormikValues } from "formik";
 import axios from "axios";

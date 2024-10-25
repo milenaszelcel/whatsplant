@@ -11,13 +11,12 @@ export const login = async (req: Request, res: Response) => {
     const user = await User.findOne({ email: validatedUser.email });
 
     if (await bcrypt.compare(validatedUser.password, user!.password)) {
-      const token = jwt.sign({ userId: user?.id }, "SECRET_KEY", {
-        expiresIn: "1h",
-      });
+      const token = jwt.sign({ userId: user?.id }, "SECRET_KEY");
       res
         .cookie("token", token, {
           httpOnly: false,
           secure: false,
+          expires: new Date(Date.now() + 1 * 3600000),
         })
         .send("Sended");
     } else {

@@ -13,7 +13,7 @@ export const createGarden = async (req: Request, res: Response) => {
     const userId = uncodedCookies.userId;
 
     const validatedGarden = await gardenValidationSchema.validateAsync({
-      name: req.body.garden,
+      name: req.body.gardenName,
       userId: userId,
     });
 

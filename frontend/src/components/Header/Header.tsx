@@ -29,7 +29,7 @@ export const Header = () => {
         </NavLink>
       </div>
 
-      {document.cookie ? (
+      {document.cookie.indexOf("token") !== -1 ? (
         <div className={styles.rightMenu}>
           <NavLink
             to="/myGarden"

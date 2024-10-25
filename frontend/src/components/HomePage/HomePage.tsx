@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Search } from "../Search/Search";
 import styles from "./HomePage.module.scss";
-import { Plant } from "contract/plant";
-import { FormikValues } from "formik";
+import { Plant } from "../../../../contract/src/plant";
+
 import axios from "axios";
 import { PlantsList } from "../PlantList/PlantsList";
 

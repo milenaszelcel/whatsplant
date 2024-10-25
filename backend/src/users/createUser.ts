@@ -16,13 +16,12 @@ export const createUser = async (req: Request, res: Response) => {
       password: hashed,
     });
     await newUser.save();
-    const token = jwt.sign({ userId: newUser.id }, "SECRET_KEY", {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign({ userId: newUser.id }, "SECRET_KEY");
     res
       .cookie("cookie", token, {
         httpOnly: false,
         secure: false,
+        expires: new Date(Date.now() + 1 * 3600000),
       })
       .send("Wyslano");
   } else {

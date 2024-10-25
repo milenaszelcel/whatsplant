@@ -1,5 +1,5 @@
 import { FormikValues } from "formik";
-import { registerValidationSchema } from "contract/schemas/registerSchema";
+import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import axios from "axios";
 import { UserForm } from "../UserForm/UserForm";
 import { useNavigate } from "react-router-dom";
