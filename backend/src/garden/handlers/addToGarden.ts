@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import Garden from "../schemas/gardenSchema";
+import Garden from "../../schemas/gardenSchema";
 
 export const addToGarden = async (req: Request, res: Response) => {
   const token = req.cookies.token;
@@ -15,11 +15,10 @@ export const addToGarden = async (req: Request, res: Response) => {
   };
 
   const userId = uncodedCookies.userId;
-  console.log(userId, plantId);
   try {
     const updatedGarden = await Garden.findOneAndUpdate(
       { userId: userId, name: gardenName },
-      { $push: { plantsId: plantId } },
+      { $push: { plants: { plantId: plantId } } },
       { new: true }
     );
     if (updatedGarden) {

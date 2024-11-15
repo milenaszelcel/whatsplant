@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { registerValidationSchema } from "../../contract/src/schemas/registerSchema";
+import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import bcrypt from "bcryptjs";
-import User from "../schemas/userSchema";
+import User from "../../schemas/userSchema";
 import { randomUUID } from "crypto";
 import jwt from "jsonwebtoken";
 

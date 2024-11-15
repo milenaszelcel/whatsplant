@@ -3,16 +3,30 @@ import styles from "./AddToGardenButton.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import { useState } from "react";
-import { DropdownGardenList } from "../DropdownGardenList/DropdownGardenList";
+import { DropdownGardenList } from "../../Gardens/DropdownGardenList/DropdownGardenList";
+import { garden } from "../../../contract/src/types/garden";
+import axios from "axios";
 
 type Props = {
   plantId: number;
 };
 export const AddToGardenButton = ({ plantId }: Props) => {
+  const [gardens, setGardens] = useState<garden[]>();
   const [isActive, setIsActive] = useState(false);
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setIsActive(!isActive);
+    if (!gardens) {
+      try {
+        const response = await axios.get(
+          "http://localhost:3001/garden/getGardensList",
+          { withCredentials: true }
+        );
+        setGardens(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
   return (
     <div>
@@ -26,7 +40,7 @@ export const AddToGardenButton = ({ plantId }: Props) => {
             />
           </div>
 
-          <DropdownGardenList plantId={plantId} />
+          <DropdownGardenList plantId={plantId} gardens={gardens} />
         </span>
       ) : (
         <AddIcon

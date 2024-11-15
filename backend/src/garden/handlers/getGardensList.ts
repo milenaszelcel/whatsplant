@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import Garden from "../../src/schemas/gardenSchema";
-import { uncodeUserFromToken } from "../users/uncodeUserFromToken";
+import Garden from "../../../src/schemas/gardenSchema";
+import { uncodeUserFromToken } from "../../users/uncodeUserFromToken";
 
 export const getGardensList = async (req: Request, res: Response) => {
   if (req.cookies.token) {

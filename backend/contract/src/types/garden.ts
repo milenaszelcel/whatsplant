@@ -4,5 +4,14 @@ export type garden = {
   _id: ObjectId;
   userId: string;
   name: string;
-  plantsId: number[];
+  plants: [
+    {
+      plantId: {
+        type: Number;
+      };
+      waterValue: {
+        type: Number;
+      };
+    },
+  ];
 };

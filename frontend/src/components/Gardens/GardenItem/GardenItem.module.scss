@@ -14,3 +14,14 @@
   cursor: pointer;
   color: white;
 }
+
+.active {
+  background-color: #a1b29b;
+  color: white;
+}
+
+.successBox {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}

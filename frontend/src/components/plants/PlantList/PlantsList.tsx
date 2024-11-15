@@ -1,6 +1,7 @@
-import { Plant } from "../../contract/src/plant";
+import { Plant } from "../../../contract/src/plant";
+
 import { PlantBox } from "../PlantBox/PlantBox";
-import styles from "./PlantList.module.scss";
+import styles from "./PlantsList.module.scss";
 
 type Props = {
   plants: Plant[];

@@ -1,7 +1,7 @@
 import express from "express";
-import { createUser } from "./createUser";
-import { login } from "./login";
-import { logout } from "./logout";
+import { createUser } from "./handlers//createUser";
+import { login } from "./handlers//login";
+import { logout } from "./handlers/logout";
 
 export const router = express.Router();
 

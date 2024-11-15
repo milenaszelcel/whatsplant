@@ -4,7 +4,8 @@ import styles from "./HomePage.module.scss";
 import { Plant } from "../../../../contract/src/plant";
 
 import axios from "axios";
-import { PlantsList } from "../PlantList/PlantsList";
+import { PlantsList } from "../plants/PlantList/PlantsList";
+import { redirect } from "react-router-dom";
 
 export const HomePage = () => {
   const [plants, setPlants] = useState<Plant[]>([]);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AddGarden } from "../Gardens/AddGarden/AddGarden";
+import { AddGarden } from "../AddGarden/AddGarden";
 import axios from "axios";
 import { garden } from "../../contract/src/types/garden";
 import styles from "./MyGarden.module.scss";
@@ -20,21 +20,11 @@ export const MyGarden = () => {
       } catch (error) {
         console.log(error);
         navigate("/");
-        window.location.reload();
       }
     };
     fetchData();
   }, []);
-  // const [plants, setPlants] = useState();
-  // const handleClick = async () => {
-  //   const plantsId = garden.plantsId;
-  //   plantsId.map(async (plant) => {
-  //     const response = await axios.get("http://localhost:3001/plants/plant", {
-  //       params: { plantId: plant },
-  //     });
-  //     console.log(response);
-  //   });
-  // };
+
   return document.cookie.includes("token") ? (
     <div className={styles.gardenContainer}>
       <AddGarden />

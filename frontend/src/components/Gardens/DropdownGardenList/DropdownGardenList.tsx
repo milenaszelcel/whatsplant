@@ -6,25 +6,10 @@ import { useEffect, useState } from "react";
 
 type Props = {
   plantId: number;
+  gardens: garden[] | undefined;
 };
 
-export const DropdownGardenList = ({ plantId }: Props) => {
-  const [gardens, setGardens] = useState<garden[]>();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3001/garden/getGardensList",
-          { withCredentials: true }
-        );
-        setGardens(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
+export const DropdownGardenList = ({ plantId, gardens }: Props) => {
   const handleClick = async (garden: garden) => {
     try {
       const response = await axios.post(

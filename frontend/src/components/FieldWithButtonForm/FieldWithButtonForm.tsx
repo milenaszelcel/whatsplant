@@ -1,6 +1,7 @@
 import { Field, Form, Formik, FormikValues } from "formik";
 
 import styles from "./FieldWithButtonForm.module.scss";
+import { Link } from "react-router-dom";
 
 type Props<Values extends FormikValues> = {
   initialValues: Values;
@@ -25,6 +26,7 @@ export const FieldWithButtonForm = <Values extends FormikValues>({
           placeholder={placeHolder}
           className={styles.searchInput}
         ></Field>
+
         <button type="submit" className={styles.searchButton}>
           <span className={styles.icon}>{icon}</span>
         </button>

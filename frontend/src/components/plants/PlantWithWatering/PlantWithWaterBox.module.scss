@@ -1,0 +1,41 @@
+.plantImage {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.plantBox {
+  background-color: white;
+  padding: 24px;
+  border-radius: 20px;
+  display: flex;
+  width: 26vw;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: start;
+  position: relative;
+}
+
+.button {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}
+
+.commonName {
+  font-size: 1.2rem;
+  text-wrap: wrap;
+  max-width: 100%;
+}
+@media (min-width: 1024px) {
+  .commonName {
+    font-size: 1.6rem;
+  }
+}
+.scientificName {
+  color: #7a976f;
+  font-size: 1.2rem;
+  text-wrap: wrap;
+}

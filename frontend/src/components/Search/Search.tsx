@@ -1,6 +1,7 @@
 import styles from "./Search.module.scss";
 import { FieldWithButtonForm } from "../FieldWithButtonForm/FieldWithButtonForm";
 import SearchIcon from "@mui/icons-material/Search";
+import { redirect } from "react-router-dom";
 interface MyFormValues {
   searchValue: string;
 }

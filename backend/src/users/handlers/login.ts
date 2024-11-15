@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import User from "../schemas/userSchema";
-import { registerValidationSchema } from "../../contract/src/schemas/registerSchema";
+import User from "../../schemas/userSchema";
+import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 

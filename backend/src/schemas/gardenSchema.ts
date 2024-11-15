@@ -10,8 +10,19 @@ const gardenSchema = new Schema<garden>({
     type: String,
     required: false,
   },
-  plantsId: {
-    type: [Number],
+  plants: {
+    _id: false,
+    type: [
+      {
+        plantId: {
+          type: Number,
+          required: true,
+        },
+        waterValue: {
+          type: Number,
+        },
+      },
+    ],
   },
 });
 
