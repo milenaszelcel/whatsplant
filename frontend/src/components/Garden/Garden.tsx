@@ -19,7 +19,6 @@ export const Garden = () => {
           }
         );
         setGardenWithPlants(response.data);
-        console.log(gardenWithPlants?.plants[0]);
       } catch (error) {
         console.log(error);
       }
@@ -28,8 +27,8 @@ export const Garden = () => {
     fetchData();
   }, [id]);
   return (
-    <div>
-      <div className={styles.gardenName}> {gardenWithPlants?.name}</div>
+    <div className={styles.gardenContainer}>
+      <span className={styles.gardenName}> {gardenWithPlants?.name}</span>
 
       {gardenWithPlants ? (
         <PlantsWithWaterList plants={gardenWithPlants.plants} />

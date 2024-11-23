@@ -1,5 +1,6 @@
 import { Plant } from "../../../contract/src/plant";
 import { AddToGardenButton } from "../../buttons/AddToGardenButton/AddToGardenButton";
+
 import styles from "./PlantBox.module.scss";
 
 type Props = {

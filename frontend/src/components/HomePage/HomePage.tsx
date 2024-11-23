@@ -1,25 +1,30 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Search } from "../Search/Search";
 import styles from "./HomePage.module.scss";
 import { Plant } from "../../../../contract/src/plant";
 
 import axios from "axios";
 import { PlantsList } from "../plants/PlantList/PlantsList";
-import { redirect } from "react-router-dom";
+import { garden } from "../../contract/src/types/garden";
+
+export const GardenContext = createContext<garden[] | null>(null);
 
 export const HomePage = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
   const [searchValue, setSearchValue] = useState<string>();
+  const [gardens, setGardens] = useState<garden[]>([]);
   const [errorMessage, setErrorMessage] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3001/plants",
-          searchValue ? { params: { search: searchValue } } : undefined
-        );
-        setPlants(response.data);
+        const response = await axios.get("http://localhost:3001/plants", {
+          params: searchValue ? { search: searchValue } : undefined,
+          withCredentials: true,
+        });
+
+        setPlants(response.data.plants);
+        setGardens(response.data.gardens);
       } catch (error) {
         console.log(error);
       }
@@ -29,15 +34,17 @@ export const HomePage = () => {
   }, [searchValue]);
 
   return (
-    <div className={styles.homePageContainer}>
-      <Search onSearch={setSearchValue} />
-      {!plants.length ? (
-        <div className={styles.errorMessage}>
-          {errorMessage} <img src="no-result-found.svg" alt="logo" />
-        </div>
-      ) : null}
-
-      <PlantsList plants={plants} />
-    </div>
+    <GardenContext.Provider value={gardens}>
+      <div className={styles.homePageContainer}>
+        <Search onSearch={setSearchValue} />
+        {!plants ? (
+          <div className={styles.errorMessage}>
+            {errorMessage} <img src="no-result-found.svg" alt="logo" />
+          </div>
+        ) : (
+          <PlantsList plants={plants} />
+        )}
+      </div>
+    </GardenContext.Provider>
   );
 };

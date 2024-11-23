@@ -4,18 +4,27 @@ import { getGardens } from "../../garden/getGardens";
 
 async function getPlants(req: Request, res: Response) {
   const { page = 1, perPage = 50, search } = req.query;
+  const token = req.cookies?.token;
   try {
     const plants = await getListOfPlants({ search } as Filter, {
       page: +page!,
       perPage: +perPage!,
     });
-    const gardens = await getGardens(req.cookies.token);
-    console.log(plants);
-    console.log(gardens);
-    res.send(plants);
+
+    if (!token) {
+      res.send({ plants: plants });
+    } else {
+      const gardens = await getGardens(token);
+      const plantsWithGardens = {
+        plants: plants,
+        gardens: gardens,
+      };
+      res.send(plantsWithGardens);
+    }
   } catch (error) {
+    console.error("Error fetching plants:", error); // Log error
     res.status(400);
-    res.statusMessage = "";
+    res.statusMessage = "Error fetching plants";
   }
 }
 

@@ -21,9 +21,7 @@ export const addToGarden = async (req: Request, res: Response) => {
       { $push: { plants: { plantId: plantId } } },
       { new: true }
     );
-    if (updatedGarden) {
-      console.log("Updated Garden:", updatedGarden);
-    } else {
+    if (!updatedGarden) {
       console.log("Garden not found.");
     }
   } catch (error) {

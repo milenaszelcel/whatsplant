@@ -2,14 +2,15 @@ import axios from "axios";
 import { garden } from "../../../contract/src/types/garden";
 import { GardenItem } from "../GardenItem/GardenItem";
 import styles from "./DropdownGardenList.module.scss";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { GardenContext } from "../../HomePage/HomePage";
 
 type Props = {
   plantId: number;
-  gardens: garden[] | undefined;
 };
 
-export const DropdownGardenList = ({ plantId, gardens }: Props) => {
+export const DropdownGardenList = ({ plantId }: Props) => {
+  const gardens = useContext(GardenContext);
   const handleClick = async (garden: garden) => {
     try {
       const response = await axios.post(

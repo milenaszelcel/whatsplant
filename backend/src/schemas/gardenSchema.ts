@@ -20,6 +20,7 @@ const gardenSchema = new Schema<garden>({
         },
         waterValue: {
           type: Number,
+          default: 0,
         },
       },
     ],

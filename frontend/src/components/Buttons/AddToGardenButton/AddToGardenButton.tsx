@@ -2,34 +2,38 @@ import classNames from "classnames";
 import styles from "./AddToGardenButton.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DropdownGardenList } from "../../Gardens/DropdownGardenList/DropdownGardenList";
-import { garden } from "../../../contract/src/types/garden";
-import axios from "axios";
 
 type Props = {
   plantId: number;
 };
 export const AddToGardenButton = ({ plantId }: Props) => {
-  const [gardens, setGardens] = useState<garden[]>();
   const [isActive, setIsActive] = useState(false);
-
-  const handleClick = async () => {
-    setIsActive(!isActive);
-    if (!gardens) {
-      try {
-        const response = await axios.get(
-          "http://localhost:3001/garden/getGardensList",
-          { withCredentials: true }
-        );
-        setGardens(response.data);
-      } catch (error) {
-        console.log(error);
-      }
+  const boxRef = useRef<HTMLDivElement | null>(null);
+  const handleClickOutside = (event: MouseEvent) => {
+    if (boxRef.current && !boxRef.current.contains(event.target as Node)) {
+      setIsActive(false);
     }
   };
+
+  useEffect(() => {
+    if (isActive) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isActive]);
+  const handleClick = async () => {
+    setIsActive(!isActive);
+  };
+
   return (
-    <div>
+    <div ref={boxRef}>
       {isActive ? (
         <span className={styles.dropDownBox}>
           <div className={styles.dropDownHeader}>
@@ -40,7 +44,7 @@ export const AddToGardenButton = ({ plantId }: Props) => {
             />
           </div>
 
-          <DropdownGardenList plantId={plantId} gardens={gardens} />
+          <DropdownGardenList plantId={plantId} />
         </span>
       ) : (
         <AddIcon
