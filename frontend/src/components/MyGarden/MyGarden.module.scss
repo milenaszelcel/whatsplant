@@ -2,5 +2,17 @@
   padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 64px;
+  padding-top: 200px;
+  height: 100vh;
+}
+
+.myGardenText {
+  color: white;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.golden {
+  color: #ffbc13;
 }

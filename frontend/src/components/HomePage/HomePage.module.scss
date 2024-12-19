@@ -1,10 +1,10 @@
 .homePageContainer {
-  background-color: #e9f3e6;
+  background-color: #004e3c;
   display: flex;
   padding: 32px;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 64px;
 }
 
 .errorMessage {
@@ -22,4 +22,11 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+}
+.gold {
+  color: #eeb001;
+}
+.text {
+  color: white;
+  font-size: 4rem;
 }

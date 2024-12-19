@@ -21,7 +21,7 @@ export const PlantWithWaterBox = ({ plant }: Props) => {
         <div className={styles.commonName}>{plant.commonName}</div>
         <div className={styles.scientificName}>{plant.scientificName}</div>
       </div>
-      <div className={styles.button}>
+      <div className={styles.dropDownMenu}>
         <WaterPlantButton plantId={plant.id} />
       </div>
     </div>

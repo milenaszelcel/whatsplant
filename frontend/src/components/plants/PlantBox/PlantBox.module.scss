@@ -1,41 +1,74 @@
 .plantImage {
-  width: 200px;
-  height: 200px;
+  width: 50%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20px;
+  border-radius: 40px 0px 0px 40px;
 }
 
 .plantBox {
   background-color: white;
-  padding: 24px;
-  border-radius: 20px;
+  border-radius: 40px;
   display: flex;
-  width: 26vw;
-  gap: 16px;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: start;
+  width: 80vw;
+  height: 30vw;
+  max-width: 100%;
+
   position: relative;
 }
 
 .button {
   position: absolute;
-  right: 16px;
-  bottom: 16px;
+  right: 32px;
+  bottom: 32px;
+}
+
+.plantContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  width: 50%;
+}
+.plantHeader {
+  background-color: #003b32;
+  padding: 32px 0px;
+  width: 100%;
+  border-radius: 0px 40px 0px 0px;
+  text-align: center;
 }
 
 .commonName {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   text-wrap: wrap;
-  max-width: 100%;
+  color: white;
 }
 @media (min-width: 1024px) {
   .commonName {
-    font-size: 1.6rem;
+    font-size: 3.2rem;
   }
 }
 .scientificName {
-  color: #7a976f;
-  font-size: 1.2rem;
+  color: #eeb001;
+  font-size: 1.6rem;
   text-wrap: wrap;
+}
+
+.plantDetails {
+  font-size: 2rem;
+  text-transform: capitalize;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 32px;
+}
+
+.infoIcon {
+  color: #eeb001;
+}
+
+.plantDetailsItem {
+  display: flex;
+  gap: 16px;
 }

@@ -20,7 +20,7 @@ export const Search = ({ onSearch }: Props) => {
       initialValues={{ searchValue: "" }}
       placeHolder="Search"
       name="searchValue"
-      icon={<SearchIcon />}
+      icon={<SearchIcon fontSize="large" />}
     />
   );
 };

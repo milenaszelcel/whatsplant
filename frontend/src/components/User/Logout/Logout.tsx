@@ -24,6 +24,7 @@ export const Logout = () => {
   return (
     <button onClick={onClick} className={styles.logoutButton}>
       <LogoutIcon
+        fontSize="large"
         className={classNames("material-symbols-outlined", styles.logoutIcon)}
       />
     </button>

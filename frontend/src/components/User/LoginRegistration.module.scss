@@ -2,22 +2,23 @@
 
 .loginContainer {
   display: flex;
-
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: white;
-  padding: 64px;
-  color: $color-base;
+  background-color: #004e3c;
+  height: 100%;
+  color: white;
   gap: 32px;
   height: 100vh;
 }
 .loginTitle {
-  font-size: 2rem;
+  font-size: 2.6rem;
 }
 .siginRedirection {
-  font-size: 1rem;
-  color: $color-base;
+  font-size: 1.6rem;
+  color: #efb000;
 }
 .text {
   text-align: center;
+  font-size: 1.4rem;
 }

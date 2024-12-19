@@ -6,6 +6,8 @@ import { Plant } from "../../../../contract/src/plant";
 import axios from "axios";
 import { PlantsList } from "../plants/PlantList/PlantsList";
 import { garden } from "../../contract/src/types/garden";
+import { HeaderCover } from "../HeaderCover/HeaderCover";
+import { Navbar } from "../Navbar/Navbar";
 
 export const GardenContext = createContext<garden[] | null>(null);
 
@@ -35,7 +37,12 @@ export const HomePage = () => {
 
   return (
     <GardenContext.Provider value={gardens}>
+     
+      <HeaderCover />
       <div className={styles.homePageContainer}>
+        <div className={styles.text}>
+          Find your favorite <span className={styles.gold}>plant</span>
+        </div>
         <Search onSearch={setSearchValue} />
         {!plants ? (
           <div className={styles.errorMessage}>

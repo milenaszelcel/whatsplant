@@ -21,7 +21,7 @@
 }
 
 .submitButton {
-  background-color: #97ae8e;
+  background-color: $color-base;
   padding: 16px;
   color: white;
   border-radius: 20px;
@@ -30,10 +30,11 @@
   font-weight: 800;
 }
 .submitButton:hover {
-  background-color: $color-base;
   cursor: pointer;
+  background-color: #012a20;
+  color: #ffbc13;
 }
 
 .label {
-  font-size: 1rem;
+  font-size: 1.4rem;
 }

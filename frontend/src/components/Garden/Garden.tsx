@@ -28,6 +28,7 @@ export const Garden = () => {
   }, [id]);
   return (
     <div className={styles.gardenContainer}>
+      <progress value={0.5} />
       <span className={styles.gardenName}> {gardenWithPlants?.name}</span>
 
       {gardenWithPlants ? (

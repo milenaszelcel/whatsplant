@@ -27,6 +27,9 @@ export const MyGarden = () => {
 
   return document.cookie.includes("token") ? (
     <div className={styles.gardenContainer}>
+      <div className={styles.myGardenText}>
+        Check what's up in your <span className={styles.golden}>gardens!</span>
+      </div>
       <AddGarden />
       {gardens ? <GardenList gardens={gardens} /> : null}
     </div>

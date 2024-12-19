@@ -3,20 +3,20 @@
   background-color: white;
   border-radius: 20px;
   box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   display: flex;
   justify-content: center;
 }
 
 .gardenBox:hover {
-  background-color: #a1b29b;
+  background-color: #003b32;
   transition: 0.2s ease-out;
   cursor: pointer;
   color: white;
 }
 
 .active {
-  background-color: #a1b29b;
+  background-color: #003b32;
   color: white;
 }
 
@@ -24,4 +24,5 @@
   display: flex;
   flex-direction: row;
   gap: 4px;
+  align-items: center;
 }

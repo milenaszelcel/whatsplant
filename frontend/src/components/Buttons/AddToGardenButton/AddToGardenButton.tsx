@@ -39,6 +39,7 @@ export const AddToGardenButton = ({ plantId }: Props) => {
           <div className={styles.dropDownHeader}>
             <div className={styles.headerText}>Choose garden:</div>
             <CloseIcon
+              fontSize="large"
               className={classNames("material-symbols-outlined", styles.icon)}
               onClick={handleClick}
             />
@@ -48,6 +49,7 @@ export const AddToGardenButton = ({ plantId }: Props) => {
         </span>
       ) : (
         <AddIcon
+          fontSize="large"
           className={classNames("material-symbols-outlined", styles.icon)}
           onClick={handleClick}
         />

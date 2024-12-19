@@ -1,6 +1,6 @@
 .searchInput {
   background-color: white;
-  padding: 16px;
+  padding: 32px;
   border-radius: 20px 0px 0px 20px;
   border: none;
   width: 30%;
@@ -8,17 +8,17 @@
 }
 
 .icon {
-  color: white;
+  color: #eeb001;
 }
 
 .searchButton {
-  background-color: #97ae8e;
+  background-color: #003b32;
   border: none;
   padding: 16px 32px;
   border-radius: 0px 20px 20px 0px;
 }
 .searchButton:hover {
-  background-color: #7a976f;
+  background-color: #00271e;
   cursor: pointer;
 }
 
