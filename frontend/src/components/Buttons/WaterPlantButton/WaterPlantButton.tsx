@@ -37,7 +37,7 @@ export const WaterPlantButton = ({ plantId }: Props) => {
   const handleSubmit = async (waterValue: string) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/garden/waterPlant",
+        `http://localhost:3001/garden/${id}/plants`,
         {
           gardenId: id,
           waterValue: waterValue,

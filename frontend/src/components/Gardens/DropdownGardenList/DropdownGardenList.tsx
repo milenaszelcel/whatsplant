@@ -14,7 +14,7 @@ export const DropdownGardenList = ({ plantId }: Props) => {
   const handleClick = async (garden: garden) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/garden/addToGarden",
+        `http://localhost:3001/garden/${garden._id}/plants/${plantId}`,
         { plantId: plantId, gardenName: garden.name },
         { withCredentials: true }
       );

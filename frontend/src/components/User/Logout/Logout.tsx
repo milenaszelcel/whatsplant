@@ -9,7 +9,7 @@ export const Logout = () => {
   const onClick = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/users/logout",
+        "http://localhost:3001/auth/logout",
         {},
         { withCredentials: true }
       );

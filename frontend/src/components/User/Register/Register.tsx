@@ -15,7 +15,7 @@ export const Register = () => {
         values
       );
       const response = await axios.post(
-        "http://localhost:3001/users/register",
+        "http://localhost:3001/users/",
         validatedValue,
         { withCredentials: true }
       );

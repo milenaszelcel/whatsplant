@@ -15,7 +15,7 @@ export const Login = () => {
         values
       );
       const response = await axios.post(
-        "http://localhost:3001/users/login",
+        "http://localhost:3001/auth/login",
         validatedValue,
         { withCredentials: true }
       );

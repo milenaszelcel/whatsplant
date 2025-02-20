@@ -11,13 +11,10 @@ export const Garden = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3001/garden/getGarden",
-          {
-            params: { id: id },
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get(`http://localhost:3001/garden/${id}`, {
+          params: { id: id },
+          withCredentials: true,
+        });
         setGardenWithPlants(response.data);
       } catch (error) {
         console.log(error);

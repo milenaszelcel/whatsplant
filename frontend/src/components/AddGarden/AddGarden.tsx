@@ -1,6 +1,4 @@
 import axios from "axios";
-import { FieldWithButtonForm } from "../FieldWithButtonForm/FieldWithButtonForm";
-import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -14,7 +12,7 @@ export const AddGarden = () => {
   const handleSubmit = async (values: MyFormValues) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/garden/createGarden",
+        "http://localhost:3001/garden",
         values,
         { withCredentials: true }
       );
@@ -34,13 +32,8 @@ export const AddGarden = () => {
   };
   return (
     <>
-      <FieldWithButtonForm
-        handleSubmit={handleSubmit}
-        initialValues={{ gardenName: "" }}
-        placeHolder="Add garden"
-        name="gardenName"
-        icon={<AddIcon />}
-      />
+      <span onClick={() => {}}></span>
+
       {errorMessage}
     </>
   );
