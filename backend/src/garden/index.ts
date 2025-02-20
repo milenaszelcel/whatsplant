@@ -4,18 +4,18 @@ import { createGarden } from "./handlers/createGarden";
 import { getGardensList } from "./handlers/getGardensList";
 import { getGarden } from "./handlers/getGarden";
 import { removeGarden } from "./handlers/removeGarden";
-import { waterPlant } from "./watering/waterPlant";
+import { waterPlant } from "./handlers/waterPlant";
 
 export const router = express.Router();
 
-router.post("/createGarden", createGarden);
+router.post("/", createGarden);
 
-router.post("/addToGarden", addToGarden);
+router.get("/", getGardensList);
 
-router.get("/getGardensList", getGardensList);
+router.delete("/", removeGarden);
 
-router.get("removeGarden", removeGarden);
+router.get("/:id", getGarden);
 
-router.get("/getGarden", getGarden);
+router.post("/:gardenId/plants/:plantId", addToGarden);
 
-router.post("/waterPlant", waterPlant);
+router.post("/:gardenId/plants", waterPlant);

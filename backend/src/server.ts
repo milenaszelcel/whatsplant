@@ -1,12 +1,15 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express, NextFunction, Request, Response } from "express";
 import dotenv from "dotenv";
 import { getPlants } from "./plants/getPlantsFromApiAndSaveToDb/getPlants";
 import * as db from "./db/connect";
 import * as plants from "./plants/index";
 import * as users from "./users/index";
 import * as garden from "./garden/index";
+import * as auth from "./auth/index";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import { refreshTokens } from "./tokenService/refreshTokens";
+import { ensureValidAuthToken } from "./tokenService/ensureValidAuthToken";
 
 dotenv.config();
 
@@ -24,6 +27,10 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/users", users.router);
+
+app.use("/auth", auth.router);
+
+app.use(ensureValidAuthToken);
 
 app.use("/plants", plants.router);
 
@@ -45,4 +52,5 @@ process.on("SIGHUP", function () {
   console.log("ZABIJ");
   process.kill(process.pid, "SIGTERM");
 });
+
 module.exports = app;

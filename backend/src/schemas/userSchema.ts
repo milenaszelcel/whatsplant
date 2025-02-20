@@ -15,6 +15,18 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ["customer", "admin"],
+    default: "customer",
+  },
+
+  devices: [
+    {
+      userAgent: String,
+      refreshToken: String,
+    },
+  ],
 });
 
 const User = model("Users", userSchema);

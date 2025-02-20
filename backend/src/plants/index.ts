@@ -5,4 +5,4 @@ import { getPlant } from "./handlers/getPlant";
 export const router = express.Router();
 
 router.get("/", getPlants);
-router.get("/plant", getPlant);
+router.get("/:id", getPlant);

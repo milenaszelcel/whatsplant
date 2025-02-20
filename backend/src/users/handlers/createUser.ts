@@ -10,22 +10,42 @@ export const createUser = async (req: Request, res: Response) => {
   const saltRounds = 10;
   const hashed = await bcrypt.hash(validatedUser.password, saltRounds);
   if (!(await User.findOne({ email: validatedUser.email }))) {
+    const userId = randomUUID();
+
+    const userAgent = req.headers["user-agent"];
+
+    const refreshToken = jwt.sign({ userId: userId }, "SECRET_KEY", {
+      expiresIn: "365d",
+    });
+
+    const accessToken = jwt.sign({ userId: userId }, "SECRET_KEY", {
+      expiresIn: "15m",
+    });
+
     const newUser = new User({
-      id: randomUUID(),
+      id: userId,
       email: validatedUser.email,
       password: hashed,
+      devices: [{ userAgent: userAgent, refreshToken: refreshToken }],
     });
-    await newUser.save();
-    const token = jwt.sign({ userId: newUser.id }, "SECRET_KEY");
-    res
-      .cookie("cookie", token, {
+    try {
+      await newUser.save();
+      res.cookie("accessToken", accessToken, {
+        maxAge: 15 * 60 * 1000,
         httpOnly: false,
         secure: false,
-        expires: new Date(Date.now() + 1 * 3600000),
-      })
-      .send("Wyslano");
+      });
+      res.cookie("refreshToken", refreshToken, {
+        maxAge: 365 * 24 * 60 * 60 * 1000,
+        httpOnly: false,
+        secure: false,
+      });
+      res.send("Sended");
+    } catch (error) {
+      console.log(error);
+    }
   } else {
-    res.statusMessage = "Uzytkownik juz istnieje";
+    res.statusMessage = "User with that email already exist";
     res.status(400).end();
   }
 };
