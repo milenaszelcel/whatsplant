@@ -1,6 +1,6 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import User from "../schemas/userSchema";
+import User from "../../schemas/userSchema";
 
 type TokenData = { userId: string };
 
@@ -42,7 +42,7 @@ export const refreshTokens = async (req: Request, res: Response) => {
       httpOnly: false,
       secure: false,
     });
-    // req.user = { email: user.email, role: user.role };
+    req.user = { email: user.email, role: user.role };
 
     console.log("Udało sie");
   } catch (error) {

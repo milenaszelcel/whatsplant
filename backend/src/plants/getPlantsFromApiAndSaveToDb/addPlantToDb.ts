@@ -1,5 +1,4 @@
-import Joi from "joi";
-import { ApiPlant } from "../../../contract/src/types/apiPlant";
+import type { ApiPlant } from "../../../contract/src/types/apiPlant";
 import { createPlant } from "./plantMapper";
 
 export const addPlantToDb = async (apiPlant: ApiPlant) => {

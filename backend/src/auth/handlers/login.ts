@@ -1,53 +1,52 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import User from "../../schemas/userSchema";
 import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const login = async (req: Request, res: Response) => {
-  const validatedUser = await registerValidationSchema.validateAsync(req.body);
+  try {
+    const validatedUser = await registerValidationSchema.validateAsync(
+      req.body
+    );
 
-  if (await User.findOne({ email: validatedUser.email })) {
     const user = await User.findOne({ email: validatedUser.email });
 
-    if (await bcrypt.compare(validatedUser.password, user!.password)) {
-      const refreshToken = jwt.sign({ userId: user?.id }, "SECRET_KEY", {
-        expiresIn: "365d",
-      });
+    if (!user) return res.status(400).send("There is no such user");
 
-      const accessToken = jwt.sign({ userId: user?.id }, "SECRET_KEY", {
-        expiresIn: "15m",
-      });
+    if (!(await bcrypt.compare(validatedUser.password, user.password)))
+      return res.status(400).send("Incorrect password");
 
-      const newDevice = {
-        userAgent: req.headers["user-agent"],
-        refreshToken: refreshToken,
-      };
+    const refreshToken = jwt.sign({ userId: user.id }, "SECRET_KEY", {
+      expiresIn: "365d",
+    });
+    const accessToken = jwt.sign({ userId: user.id }, "SECRET_KEY", {
+      expiresIn: "15m",
+    });
 
-      await User.findOneAndUpdate(
-        { id: user!.id },
-        { $push: { devices: newDevice } },
-        { new: true }
-      );
+    await User.findOneAndUpdate(
+      { id: user.id },
+      {
+        $push: {
+          devices: { userAgent: req.headers["user-agent"], refreshToken },
+        },
+      },
+      { new: true }
+    );
 
-      res.cookie("accessToken", accessToken, {
-        maxAge: 15 * 60 * 1000,
-        httpOnly: false,
-        secure: false,
-      });
-      res.cookie("refreshToken", refreshToken, {
-        maxAge: 365 * 24 * 60 * 60 * 1000,
-        httpOnly: false,
-        secure: false,
-      });
+    res.cookie("accessToken", accessToken, {
+      maxAge: 15 * 60 * 1000,
+      httpOnly: false,
+      secure: false,
+    });
+    res.cookie("refreshToken", refreshToken, {
+      maxAge: 365 * 24 * 60 * 60 * 1000,
+      httpOnly: false,
+      secure: false,
+    });
 
-      res.send("Sended");
-    } else {
-      res.statusMessage = "Incorrect password";
-      res.status(400).end();
-    }
-  } else {
-    res.statusMessage = "There is no such user";
-    res.status(400).end();
+    res.send("Sended");
+  } catch (error) {
+    res.status(400).send(error);
   }
 };

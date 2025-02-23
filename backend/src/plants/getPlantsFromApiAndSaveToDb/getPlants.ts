@@ -1,4 +1,4 @@
-import { ApiPlant } from "../../../contract/src/types/apiPlant";
+import type { ApiPlant } from "../../../contract/src/types/apiPlant";
 import { addPlantToDb } from "./addPlantToDb";
 import { getPlantsData } from "./getPlantsData";
 import helpfulVariables from "../../schemas/helpfulVariablesSchema";

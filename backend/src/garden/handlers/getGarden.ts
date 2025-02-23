@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import { uncodeUserFromToken } from "../../users/uncodeUserFromToken";
 import Garden from "../../schemas/gardenSchema";
 import Plant from "../../schemas/plantSchema";

@@ -1,7 +1,7 @@
 import express from "express";
 import { login } from "./handlers/login";
 import { logout } from "./handlers/logout";
-import { refreshTokens } from "../tokenService/refreshTokens";
+import { refreshTokens } from "./tokenService/refreshTokens";
 
 export const router = express.Router();
 

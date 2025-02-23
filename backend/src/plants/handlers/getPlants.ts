@@ -1,5 +1,5 @@
-import { Request, Response } from "express";
-import { Filter, getListOfPlants } from "../repository";
+import type { Request, Response } from "express";
+import { type Filter, getListOfPlants } from "../repository";
 import { getGardens } from "../../garden/getGardens";
 
 async function getPlants(req: Request, res: Response) {

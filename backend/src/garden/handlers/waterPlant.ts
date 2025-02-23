@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import Garden from "../../schemas/gardenSchema";
 
 export const waterPlant = async (req: Request, res: Response) => {

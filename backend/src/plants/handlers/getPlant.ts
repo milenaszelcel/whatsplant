@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import Plant from "../../../src/schemas/plantSchema";
 
 export const getPlant = async (req: Request, res: Response) => {

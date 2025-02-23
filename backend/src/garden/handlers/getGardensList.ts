@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import Garden from "../../../src/schemas/gardenSchema";
 import { uncodeUserFromToken } from "../../users/uncodeUserFromToken";
