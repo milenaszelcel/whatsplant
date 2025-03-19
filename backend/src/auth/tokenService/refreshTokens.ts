@@ -42,7 +42,6 @@ export const refreshTokens = async (req: Request, res: Response) => {
       httpOnly: false,
       secure: false,
     });
-    req.user = { email: user.email, role: user.role };
 
     console.log("Udało sie");
   } catch (error) {

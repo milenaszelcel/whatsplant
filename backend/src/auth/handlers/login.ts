@@ -10,27 +10,32 @@ export const login = async (req: Request, res: Response) => {
       req.body
     );
 
-    const user = await User.findOne({ email: validatedUser.email });
+    const existingUser = await User.findOne({ email: validatedUser.email });
+    if (!existingUser) {
+      return res.status(409).send("There is no such user");
+    }
 
-    if (!user) return res.status(400).send("There is no such user");
+    if (
+      !(await bcrypt.compare(validatedUser.password, existingUser!.password))
+    ) {
+      return res.status(409).send("Incorrect password");
+    }
 
-    if (!(await bcrypt.compare(validatedUser.password, user.password)))
-      return res.status(400).send("Incorrect password");
-
-    const refreshToken = jwt.sign({ userId: user.id }, "SECRET_KEY", {
+    const refreshToken = jwt.sign({ userId: existingUser.id }, "SECRET_KEY", {
       expiresIn: "365d",
     });
-    const accessToken = jwt.sign({ userId: user.id }, "SECRET_KEY", {
+    const accessToken = jwt.sign({ userId: existingUser.id }, "SECRET_KEY", {
       expiresIn: "15m",
     });
 
+    const newDevice = {
+      userAgent: req.headers["user-agent"],
+      refreshToken: refreshToken,
+    };
+
     await User.findOneAndUpdate(
-      { id: user.id },
-      {
-        $push: {
-          devices: { userAgent: req.headers["user-agent"], refreshToken },
-        },
-      },
+      { id: existingUser.id },
+      { $push: { devices: newDevice } },
       { new: true }
     );
 
@@ -45,8 +50,9 @@ export const login = async (req: Request, res: Response) => {
       secure: false,
     });
 
-    res.send("Sended");
+    return res.send("Sended");
   } catch (error) {
-    res.status(400).send(error);
+    console.error(error);
+    return res.status(400).send(`Error: ${error}`);
   }
 };

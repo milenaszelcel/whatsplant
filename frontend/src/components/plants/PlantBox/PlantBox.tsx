@@ -3,12 +3,15 @@ import { AddToGardenButton } from "../../buttons/AddToGardenButton/AddToGardenBu
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import styles from "./PlantBox.module.scss";
 import WaterDropIcon from "@mui/icons-material/WaterDrop";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 type Props = {
   plant: Plant;
 };
 
 export const PlantBox = ({ plant }: Props) => {
+  const { user } = useContext(AuthContext);
   return (
     <div className={styles.plantBox}>
       <img
@@ -40,7 +43,7 @@ export const PlantBox = ({ plant }: Props) => {
         </div>
       </div>
 
-      {document.cookie.indexOf("token") !== -1 ? (
+      {user ? (
         <div className={styles.button}>
           <AddToGardenButton plantId={plant.id} />
         </div>

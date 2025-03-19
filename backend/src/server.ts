@@ -8,8 +8,8 @@ import * as garden from "./garden/index";
 import * as auth from "./auth/index";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import { refreshTokens } from "./auth/tokenService/refreshTokens";
 import { ensureValidAuthToken } from "./auth/tokenService/ensureValidAuthToken";
+import { checkAuthorization } from "./auth/checkAuthorization";
 
 dotenv.config();
 
@@ -25,16 +25,14 @@ app.use(
 );
 app.use(express.json());
 app.use(cookieParser());
-
-app.use("/users", users.router);
+app.use(ensureValidAuthToken);
 
 app.use("/auth", auth.router);
-
-app.use(ensureValidAuthToken);
+app.use("/users", users.router);
 
 app.use("/plants", plants.router);
 
-app.use("/garden", garden.router);
+app.use("/garden", checkAuthorization, garden.router);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Serverdfdf");

@@ -19,7 +19,7 @@ export const ensureValidAuthToken = async (
       await refreshTokens(req, res);
       return next();
     } catch (error) {
-      return res.status(401).json({ error: "Unable to update token" });
+      return console.log(error);
     }
   }
   try {
@@ -31,6 +31,7 @@ export const ensureValidAuthToken = async (
     ) {
       await refreshTokens(req, res);
     }
+
     return next();
   } catch (error) {
     res.clearCookie("accessToken");

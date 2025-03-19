@@ -10,15 +10,18 @@ export const createUser = async (req: Request, res: Response) => {
     const validatedUser = await registerValidationSchema.validateAsync(
       req.body
     );
-    if (await User.findOne({ email: validatedUser.email }))
-      return res.status(400).send("User with that email already exists");
+    const existingUser = await User.findOne({ email: validatedUser.email });
+    if (existingUser) {
+      return res.status(409).send("User with that email already exists");
+    }
 
-    const hashed = await bcrypt.hash(validatedUser.password, 10);
     const userId = randomUUID();
-    const refreshToken = jwt.sign({ userId }, "SECRET_KEY", {
+    const hashed = await bcrypt.hash(validatedUser.password, 10);
+
+    const refreshToken = jwt.sign({ userId: userId }, "SECRET_KEY", {
       expiresIn: "365d",
     });
-    const accessToken = jwt.sign({ userId }, "SECRET_KEY", {
+    const accessToken = jwt.sign({ userId: userId }, "SECRET_KEY", {
       expiresIn: "15m",
     });
 
@@ -26,7 +29,9 @@ export const createUser = async (req: Request, res: Response) => {
       id: userId,
       email: validatedUser.email,
       password: hashed,
-      devices: [{ userAgent: req.headers["user-agent"], refreshToken }],
+      devices: [
+        { userAgent: req.headers["user-agent"], refreshToken: refreshToken },
+      ],
     });
 
     await newUser.save();
@@ -41,9 +46,10 @@ export const createUser = async (req: Request, res: Response) => {
       httpOnly: false,
       secure: false,
     });
-    res.send("Sended");
+
+    return res.send("Sended");
   } catch (error) {
-    console.log(error);
-    res.status(400).send(error);
+    console.error(error);
+    return res.status(400).send(`Error: ${error}`);
   }
 };
