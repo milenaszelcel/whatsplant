@@ -1,6 +1,8 @@
+@import "../../../styles/variables";
+
 .gardenBox {
   padding: 24px;
-  background-color: white;
+  background-color: $softGray;
   border-radius: 20px;
   box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 1.6rem;
@@ -9,15 +11,15 @@
 }
 
 .gardenBox:hover {
-  background-color: #003b32;
+  background-color: $darkGreen;
   transition: 0.2s ease-out;
   cursor: pointer;
-  color: white;
+  color: $softGray;
 }
 
 .active {
-  background-color: #003b32;
-  color: white;
+  background-color: $darkGreen;
+  color: $softGray;
 }
 
 .successBox {

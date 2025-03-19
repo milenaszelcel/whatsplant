@@ -1,3 +1,5 @@
+@import "../../../styles/variables";
+
 .plantImage {
   width: 50%;
   height: 100%;
@@ -6,13 +8,12 @@
 }
 
 .plantBox {
-  background-color: white;
+  background-color: $softGray;
   border-radius: 40px;
   display: flex;
   width: 80vw;
   height: 30vw;
   max-width: 100%;
-
   position: relative;
 }
 
@@ -30,7 +31,7 @@
   width: 50%;
 }
 .plantHeader {
-  background-color: #003b32;
+  background-color: $darkGreen;
   padding: 32px 0px;
   width: 100%;
   border-radius: 0px 40px 0px 0px;
@@ -38,24 +39,19 @@
 }
 
 .commonName {
-  font-size: 1.8rem;
+  @include largeText;
   text-wrap: wrap;
-  color: white;
+  color: $softGray;
 }
-@media (min-width: 1024px) {
-  .commonName {
-    font-size: 3.2rem;
-  }
-}
+
 .scientificName {
-  color: #eeb001;
-  font-size: 1.6rem;
+  color: $gold;
+  @include mediumText;
   text-wrap: wrap;
 }
 
 .plantDetails {
-  font-size: 2rem;
-  text-transform: capitalize;
+  @include regularText;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +61,7 @@
 }
 
 .infoIcon {
-  color: #eeb001;
+  color: $gold;
 }
 
 .plantDetailsItem {

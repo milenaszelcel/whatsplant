@@ -1,17 +1,17 @@
-@import "../../../css/vars.scss";
+@import "../../../styles/variables";
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 30%;
+  gap: 32px;
+  width: 100%;
 }
 
 .field {
   padding: 16px;
   border-radius: 20px;
-  border-color: $color-base;
-  font-size: 1rem;
+  border-color: $softGray;
+  @include regularText;
 }
 
 .formItem {
@@ -21,20 +21,20 @@
 }
 
 .submitButton {
-  background-color: $color-base;
+  background-color: $darkGreen;
   padding: 16px;
-  color: white;
+  color: $softGray;
   border-radius: 20px;
   border: none;
-  font-size: 1rem;
-  font-weight: 800;
+  @include mediumText;
 }
 .submitButton:hover {
   cursor: pointer;
-  background-color: #012a20;
-  color: #ffbc13;
+  background-color: $green;
+  color: $gold;
 }
 
-.label {
-  font-size: 1.4rem;
+.formTitle {
+  @include largeText;
+  text-align: center;
 }

@@ -1,0 +1,57 @@
+@import "../../styles/variables";
+
+.gardenContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding-top: 128px;
+  height: 100vh;
+}
+
+.myGardenText {
+  color: $softGray;
+  text-align: center;
+  font-size: 3rem;
+}
+
+.golden {
+  color: $gold;
+}
+
+.noGardensCover {
+  width: 50vw;
+  height: 100%;
+  align-self: center;
+}
+
+.noGardenContentContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.gardensActionHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px;
+}
+
+.actionButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.addButton {
+  background-color: $darkGreen;
+  color: $gold;
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+}
+
+.mainGardenContainer {
+  background-color: $darkGreen;
+}

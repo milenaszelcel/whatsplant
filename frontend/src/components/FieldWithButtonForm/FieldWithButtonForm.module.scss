@@ -1,9 +1,11 @@
+@import "../../styles/variables";
+
 .searchInput {
-  background-color: white;
+  background-color: $softGray;
   padding: 32px;
   border-radius: 20px 0px 0px 20px;
   border: none;
-  width: 30%;
+  width: 100%;
   font-size: 1rem;
 }
 
@@ -12,19 +14,19 @@
 }
 
 .searchButton {
-  background-color: #003b32;
+  background-color: $darkGreen;
   border: none;
   padding: 16px 32px;
   border-radius: 0px 20px 20px 0px;
 }
 .searchButton:hover {
-  background-color: #00271e;
+  background-color: $green;
   cursor: pointer;
 }
 
 .searchForm {
   display: flex;
   align-items: stretch;
-  justify-content: center;
+
   width: 100%;
 }

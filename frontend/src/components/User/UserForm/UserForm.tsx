@@ -7,14 +7,16 @@ interface MyFormValues {
 
 type Props = {
   onSubmit: (values: MyFormValues) => void;
-  buttonValue: String;
+  buttonValue: string;
+  formTitle: string;
 };
 
-export const UserForm = ({ onSubmit, buttonValue }: Props) => {
+export const UserForm = ({ onSubmit, buttonValue, formTitle }: Props) => {
   const initialValues: MyFormValues = { email: "", password: "" };
   return (
     <Formik initialValues={initialValues} onSubmit={onSubmit}>
       <Form className={styles.form}>
+        <div className={styles.formTitle}>{formTitle}</div>
         <div className={styles.formItem}>
           <label htmlFor="email" className={styles.label}>
             E-mail

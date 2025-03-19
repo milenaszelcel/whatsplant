@@ -1,0 +1,50 @@
+$fontFamily: "Playfair Display", serif;
+
+// texts
+@mixin hugeText {
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+@mixin veryLargeText {
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+@mixin largeText {
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+@mixin mediumText {
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+@mixin regularText {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1px;
+}
+
+// colors
+$black: #000;
+$darkGreen: #1f3617;
+$green: #214615;
+$gold: #efb000;
+$softGray: #f7f3f3;
+$gray: #c9c9c9;

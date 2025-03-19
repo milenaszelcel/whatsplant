@@ -1,24 +1,29 @@
-@import "../../css/vars.scss";
+@import "../../styles/variables";
 
 .loginContainer {
   display: flex;
-  justify-content: center;
+  background-color: rgba(247, 243, 243, 0.1);
   align-items: center;
   flex-direction: column;
-  background-color: #004e3c;
-  height: 100%;
-  color: white;
-  gap: 32px;
-  height: 100vh;
+  border-radius: 20px;
+  padding: 92px;
+  gap: 64px;
+  @include regularText;
+  color: $softGray;
 }
-.loginTitle {
-  font-size: 2.6rem;
-}
+
 .siginRedirection {
-  font-size: 1.6rem;
   color: #efb000;
 }
+
 .text {
   text-align: center;
-  font-size: 1.4rem;
+}
+
+.loginPage {
+  display: flex;
+  padding-top: 182px;
+  align-items: center;
+  flex-direction: column;
+  gap: 64px;
 }

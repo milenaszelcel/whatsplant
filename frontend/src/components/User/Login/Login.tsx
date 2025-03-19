@@ -14,11 +14,13 @@ export const Login = () => {
       const validatedValue = await registerValidationSchema.validateAsync(
         values
       );
+
       const response = await axios.post(
         "http://localhost:3001/auth/login",
         validatedValue,
         { withCredentials: true }
       );
+
       navigate("/");
       window.location.reload();
     } catch (error) {
@@ -35,15 +37,20 @@ export const Login = () => {
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.loginTitle}>Login </div>
-      <UserForm onSubmit={onSubmit} buttonValue="Login" />
-      {errorMessage}
-      <div className={styles.text}>
-        <div>Don't have an account? Register below</div>
-        <NavLink to="/signin" className={styles.siginRedirection}>
-          Sign In
-        </NavLink>
+    <div className={styles.loginPage}>
+      <div className={styles.loginContainer}>
+        <UserForm
+          onSubmit={onSubmit}
+          buttonValue="Sign in"
+          formTitle="Sign in"
+        />
+        {errorMessage}
+        <div className={styles.text}>
+          <div>Don't have an account? Register below</div>
+          <NavLink to="/signup" className={styles.siginRedirection}>
+            Sign up
+          </NavLink>
+        </div>
       </div>
     </div>
   );

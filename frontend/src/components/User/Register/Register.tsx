@@ -2,7 +2,7 @@ import { FormikValues } from "formik";
 import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import axios from "axios";
 import { UserForm } from "../UserForm/UserForm";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "../LoginRegistration.module.scss";
 
@@ -19,7 +19,7 @@ export const Register = () => {
         validatedValue,
         { withCredentials: true }
       );
-      console.log(document.cookie);
+
       navigate("/");
       window.location.reload();
     } catch (error) {
@@ -35,10 +35,21 @@ export const Register = () => {
     }
   };
   return (
-    <div className={styles.loginContainer}>
-      <div className={styles.loginTitle}>Register</div>
-      <UserForm onSubmit={onSubmit} buttonValue="Sign in" />
-      {errorMessage}
+    <div className={styles.loginPage}>
+      <div className={styles.loginContainer}>
+        <UserForm
+          onSubmit={onSubmit}
+          buttonValue="Sign up"
+          formTitle="Sign up"
+        />
+        {errorMessage}
+        <div className={styles.text}>
+          <div>Have an account? Login below</div>
+          <NavLink to="/signin" className={styles.siginRedirection}>
+            Sign in
+          </NavLink>
+        </div>
+      </div>
     </div>
   );
 };

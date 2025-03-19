@@ -1,14 +1,16 @@
+@import "../../../styles/variables";
+
 .logoutButton {
   background-color: transparent;
   border: none;
-  color: white;
+  color: $softGray;
   padding: 4px;
 }
 .logoutIcon {
   font-size: 1.8rem;
 }
 .logoutButton:hover {
-  color: #ffbc13;
+  color: $gold;
   border-radius: 10px;
   cursor: pointer;
 }

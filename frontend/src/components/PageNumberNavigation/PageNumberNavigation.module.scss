@@ -1,0 +1,21 @@
+@import "../../styles/variables";
+
+.pagesNavigator {
+  display: flex;
+  flex-direction: row;
+  align-self: end;
+  gap: 16px;
+  color: $softGray;
+
+  max-width: 200px;
+  padding: 32px;
+}
+
+.activePage {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.pageNumber {
+  cursor: pointer;
+}

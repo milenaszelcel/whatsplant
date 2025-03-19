@@ -3,7 +3,7 @@ import { garden } from "../../../contract/src/types/garden";
 import { GardenItem } from "../GardenItem/GardenItem";
 import styles from "./DropdownGardenList.module.scss";
 import { useContext } from "react";
-import { GardenContext } from "../../HomePage/HomePage";
+import { GardenContext } from "../../../pages/HomePage/HomePage";
 
 type Props = {
   plantId: number;

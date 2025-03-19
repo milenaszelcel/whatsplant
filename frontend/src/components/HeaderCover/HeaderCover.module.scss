@@ -1,4 +1,29 @@
+@import "../../styles/variables";
+
 .cover {
   width: 100vw;
   max-width: 100%;
+}
+
+.gold {
+  color: $gold;
+}
+
+.coverText {
+  color: $softGray;
+  @include hugeText;
+  max-width: 60%;
+}
+
+.coverContainer {
+  position: relative;
+}
+
+.coverContent {
+  position: absolute;
+  padding: 32px;
+  bottom: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
