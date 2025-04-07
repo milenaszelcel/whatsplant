@@ -15,9 +15,10 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./frontend:/usr/src/app
+      - ./contract:/usr/src/contract
     networks:
       - app-network
+
     develop:
       watch:
         - path: ./frontend/package.json

@@ -1,8 +1,7 @@
-import type { ApiPlant } from "../../../contract/src/types/apiPlant";
 import { addPlantToDb } from "./addPlantToDb";
 import { getPlantsData } from "./getPlantsData";
 import helpfulVariables from "../../schemas/helpfulVariablesSchema";
-import { plantValidationSchema } from "../../../contract/src/schemas/plantSchema";
+import { plantValidationSchema, type ApiPlant } from "@greenmate/contract";
 
 type PlantData = { apiPlant: ApiPlant; page: number };
 

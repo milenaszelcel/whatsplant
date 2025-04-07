@@ -1,4 +1,4 @@
-export type garden = {
+export type Garden = {
   userId: number;
   name: string;
   plantsId: Number[];

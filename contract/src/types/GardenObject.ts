@@ -1,16 +1,15 @@
-import { ObjectId } from "mongoose";
-
-export type garden = {
-  _id: ObjectId;
+export type GardenObject = {
+  _id: string;
   userId: string;
   name: string;
+  type: string;
   plants: [
     {
       plantId: {
-        type: Number;
+        type: number;
       };
       waterValue: {
-        type: Number;
+        type: number;
       };
     },
   ];

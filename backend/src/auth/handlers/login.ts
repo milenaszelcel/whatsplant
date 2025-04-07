@@ -1,9 +1,8 @@
 import type { Request, Response } from "express";
 import User from "../../schemas/userSchema";
-import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-
+import { registerValidationSchema } from "@greenmate/contract/src/schemas/registerValidationSchema";
 export const login = async (req: Request, res: Response) => {
   try {
     const validatedUser = await registerValidationSchema.validateAsync(
@@ -52,7 +51,7 @@ export const login = async (req: Request, res: Response) => {
 
     return res.send("Sended");
   } catch (error) {
-    console.error(error);
+    console.error(`sdsdsds ${error}`);
     return res.status(400).send(`Error: ${error}`);
   }
 };

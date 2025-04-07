@@ -1,4 +1,4 @@
-import type { ApiPlant } from "../../../contract/src/types/apiPlant";
+import type { ApiPlant } from "@greenmate/contract";
 import Plant from "../../schemas/plantSchema";
 
 export const createPlant = (apiPlant: ApiPlant) => {

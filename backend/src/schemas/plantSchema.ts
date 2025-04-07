@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import type { Plant as IPlant } from "../../contract/src/plant";
+import type { Plant as IPlant } from "@greenmate/contract";
 
 const plantSchema = new Schema<IPlant>({
   id: {

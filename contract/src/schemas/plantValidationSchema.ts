@@ -1,7 +1,7 @@
 import Joi from "joi";
-import { ApiPlant } from "../types/apiPlant";
+import type { ApiPlant } from "@greenmate/contract/src/types/apiPlant";
 
-const plantValidateSchema = Joi.object({
+export const plantValidationSchema = Joi.object({
   id: Joi.number().integer().positive().required(),
   common_name: Joi.string().required(),
   scientific_name: Joi.array().items(Joi.string()).required(),

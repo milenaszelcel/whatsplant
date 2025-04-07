@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import Garden from "../../schemas/gardenSchema";
-import { gardenValidationSchema } from "../../../contract/src/schemas/gardenSchema";
+import { gardenValidationSchema } from "@greenmate/contract/src/schemas/gardenValidationSchema";
 
 export const createGarden = async (req: Request, res: Response) => {
   if (req.cookies.token) {

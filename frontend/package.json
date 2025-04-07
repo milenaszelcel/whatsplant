@@ -2,21 +2,27 @@
   "name": "serve_point",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "@greenmate/contract": "file:../contract",
     "@mui/icons-material": "^6.1.2",
     "@mui/material": "^6.1.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.0.1",
-    "@types/node": "^16.7.13",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "axios": "^1.7.7",
     "classnames": "^2.5.1",
+    "eslint-config-react-app": "^7.0.1",
     "formik": "^2.4.6",
     "joi": "^17.13.3",
     "jwt-decode": "^4.0.0",
@@ -26,16 +32,16 @@
     "react-cookie": "^7.2.2",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2",
-    "react-scripts": "5.0.1",
-    "sass": "^1.79.4",
-    "typescript": "^4.4.2",
+    "sass": "^1.86.2",
+    "typescript": "^5.8.2",
+    "vite": "^6.2.5",
+    "vite-plugin-eslint": "^1.8.1",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "vite --port 3000 --host 0.0.0.0",
+    "build": "vite build",
+    "serve": "vite preview"
   },
   "eslintConfig": {
     "extends": [
@@ -56,12 +62,19 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^8.2.0",
+    "@babel/plugin-transform-react-jsx": "^7.25.9",
+    "@babel/preset-typescript": "^7.27.0",
+    "customize-cra": "^1.0.0",
+    "eslint": "^9.23.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "react-app-rewired": "^2.2.1",
+    "terser-webpack-plugin": "^5.3.14",
+    "typescript-eslint": "^8.29.0",
     "typescript-plugin-css-modules": "^5.1.0"
   }
 }
