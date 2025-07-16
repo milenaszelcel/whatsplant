@@ -1,14 +1,14 @@
-import { Field, Form, Formik, FormikValues } from "formik";
-
+import { Field, Form, Formik, type FormikValues } from "formik";
 import styles from "./FieldWithButtonForm.module.scss";
-import { Link } from "react-router-dom";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material";
 
 type Props<Values extends FormikValues> = {
   initialValues: Values;
   placeHolder: string;
   handleSubmit: (values: Values) => void;
   name: string;
-  icon: JSX.Element;
+  icon: OverridableComponent<SvgIconTypeMap<object, "svg">>;
 };
 
 export const FieldWithButtonForm = <Values extends FormikValues>({
@@ -16,7 +16,7 @@ export const FieldWithButtonForm = <Values extends FormikValues>({
   handleSubmit,
   placeHolder,
   name,
-  icon,
+  icon: IconComponent,
 }: Props<Values>) => {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
@@ -27,8 +27,10 @@ export const FieldWithButtonForm = <Values extends FormikValues>({
           className={styles.searchInput}
         ></Field>
 
-        <button type="submit" className={styles.searchButton}>
-          <span className={styles.icon}>{icon}</span>
+        <button className={styles.searchButton} type="submit">
+          <span className={styles.icon}>
+            <IconComponent fontSize="large" />
+          </span>
         </button>
       </Form>
     </Formik>

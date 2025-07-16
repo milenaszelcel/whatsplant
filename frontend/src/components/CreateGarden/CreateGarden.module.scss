@@ -1,27 +1,32 @@
-@import "../../styles/variables.scss";
+@use "../../styles/variables" as *;
 
 .addGardenContainer {
   display: flex;
-  padding: 182px 320px;
-  align-items: center;
-  height: 80vh;
   flex-direction: column;
-  gap: 64px;
+  justify-content: center;
+  padding: 8px;
 }
 
 .addGardenForm {
   background-color: rgba(247, 243, 243, 0.1);
-
   border-radius: 20px;
-  width: 100%;
-  padding: 92px;
+  width: 60vw;
+  padding: 32px 64px;
   @include mediumText;
-
   color: white;
   display: flex;
   justify-content: center;
+  align-self: center;
   flex-direction: column;
-  gap: 64px;
+  gap: 32px;
+}
+
+.plantsList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
 
 .gold {
@@ -29,15 +34,16 @@
 }
 
 .headText {
-  @include veryLargeText;
+  @include largeText;
   color: $softGray;
+  text-align: center;
 }
 
 .formField {
   @include regularText;
   background-color: rgba(30, 64, 19, 0.4);
   color: $softGray;
-  padding: 16px;
+  padding: 8px;
   border-radius: 0px 20px 20px 0px;
   width: 100%;
   border-color: transparent;
@@ -70,6 +76,7 @@
   align-items: center;
   gap: 32px;
   cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .radioOption input[type="radio"] {
@@ -78,6 +85,7 @@
 
 .radioOption input[type="radio"]:checked + .radioIcon {
   background-color: $gold;
+  color: $green;
 }
 
 .buttonWithIcon {
@@ -88,9 +96,18 @@
   border-radius: 20px;
   border-color: transparent;
   padding: 18px;
-  @include largeText;
+  @include mediumText;
   justify-content: center;
-  gap: 32px;
+  transition: 0.2s ease-in-out;
+  gap: 16px;
+  cursor: pointer;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.buttonWithIcon:hover,
+.radioIcon:hover {
+  background-color: $gold;
+  color: $green;
 }
 
 .typeRadioContainer {
@@ -98,4 +115,31 @@
   flex-direction: column;
   align-items: center;
   gap: 32px;
+}
+
+.topPanel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 32px;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.errorMessage {
+  color: $red;
+  @include regularText;
+}
+
+.miniPlantBox:hover img {
+  box-shadow: 0px 0px 0px 2px $gold;
+  border-radius: 40px;
+}
+
+.selectedPlantsList {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
 }

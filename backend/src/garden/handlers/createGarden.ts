@@ -1,27 +1,26 @@
 import type { Request, Response } from "express";
-import jwt from "jsonwebtoken";
 import Garden from "../../schemas/gardenSchema";
 import { gardenValidationSchema } from "@greenmate/contract/src/schemas/gardenValidationSchema";
+import type { PlantWithAmount } from "@greenmate/contract";
 
 export const createGarden = async (req: Request, res: Response) => {
-  if (req.cookies.token) {
-    const token = req.cookies.token;
-    const uncodedCookies = (await jwt.verify(token, "SECRET_KEY")) as {
-      userId: string;
-    };
-    const userId = uncodedCookies.userId;
+  const userId = req.user?.id;
 
-    const validatedGarden = await gardenValidationSchema.validateAsync({
-      name: req.body.name,
-      userId: userId,
-    });
+  const plantsWithAmount = <PlantWithAmount[]>req.body.plantsWithAmount;
 
-    const newGarden = await new Garden(validatedGarden);
+  const expandedPlantList = plantsWithAmount.flatMap((plantWithAmount) =>
+    Array(plantWithAmount.amount).fill({ plantId: plantWithAmount.plant.id })
+  );
 
-    newGarden.save();
-    res.send("Succesfully added new garden");
-  } else {
-    res.statusMessage = "Write correct garden's name";
-    res.status(400).end();
-  }
+  const validatedGarden = await gardenValidationSchema.validateAsync({
+    name: req.body.name,
+    type: req.body.type,
+    userId: userId,
+    plants: expandedPlantList,
+  });
+
+  const newGarden = await new Garden(validatedGarden);
+
+  newGarden.save();
+  res.send("Succesfully added new garden");
 };
