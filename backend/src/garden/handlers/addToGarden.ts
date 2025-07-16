@@ -3,18 +3,14 @@ import jwt from "jsonwebtoken";
 import Garden from "../../schemas/gardenSchema";
 
 export const addToGarden = async (req: Request, res: Response) => {
-  const token = req.cookies.token;
   const plantId = req.body.plantId;
   const gardenName = req.body.gardenName;
 
-  if (!token || !plantId) {
-    return res.status(400).json({ message: "Token or plant ID missing." });
+  if (!plantId) {
+    return res.status(400).json({ message: "Plant ID missing." });
   }
-  const uncodedCookies = (await jwt.verify(token, "SECRET_KEY")) as {
-    userId: string;
-  };
 
-  const userId = uncodedCookies.userId;
+  const userId = req.user?.id;
   try {
     const updatedGarden = await Garden.findOneAndUpdate(
       { userId: userId, name: gardenName },
