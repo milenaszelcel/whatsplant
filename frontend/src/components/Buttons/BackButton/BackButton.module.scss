@@ -1,0 +1,20 @@
+@use "../../../styles/variables" as *;
+
+.backButton {
+  display: flex;
+  align-items: center;
+  background-color: $green;
+  padding: 16px;
+  @include mediumText;
+  border-radius: 20px;
+  color: $gold;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  gap: 12px;
+  align-self: flex-start;
+}
+
+.backButton:hover {
+  background-color: $gold;
+  color: $green;
+}

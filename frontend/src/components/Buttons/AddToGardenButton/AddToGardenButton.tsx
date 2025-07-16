@@ -3,12 +3,11 @@ import styles from "./AddToGardenButton.module.scss";
 import CloseIcon from "@mui/icons-material/Close";
 import AddIcon from "@mui/icons-material/Add";
 import { useEffect, useRef, useState } from "react";
-import { DropdownGardenList } from "../../Gardens/DropdownGardenList/DropdownGardenList";
 
-type Props = {
-  plantId: number;
-};
-export const AddToGardenButton = ({ plantId }: Props) => {
+// type Props = {
+//   plantId: number;
+// };
+export const AddToGardenButton = () => {
   const [isActive, setIsActive] = useState(false);
   const boxRef = useRef<HTMLDivElement | null>(null);
   const handleClickOutside = (event: MouseEvent) => {
@@ -44,8 +43,6 @@ export const AddToGardenButton = ({ plantId }: Props) => {
               onClick={handleClick}
             />
           </div>
-
-          <DropdownGardenList plantId={plantId} />
         </span>
       ) : (
         <AddIcon
