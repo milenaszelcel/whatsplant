@@ -1,4 +1,4 @@
-import { Plant } from "../../../contract/src/plant";
+import type { Plant } from "@greenmate/contract";
 
 import { PlantBox } from "../PlantBox/PlantBox";
 import styles from "./PlantsList.module.scss";

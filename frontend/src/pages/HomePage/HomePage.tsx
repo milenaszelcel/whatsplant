@@ -1,42 +1,44 @@
-import { createContext, useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 import styles from "./HomePage.module.scss";
-import { Plant } from "../../../../contract/src/plant";
 import axios from "axios";
 import { PlantsList } from "../../components/plants/PlantList/PlantsList";
-import { garden } from "../../contract/src/types/garden";
 import { HeaderCover } from "../../components/HeaderCover/HeaderCover";
 import { PageNumberNavigation } from "../../components/PageNumberNavigation/PageNumberNavigation";
-
-export const GardenContext = createContext<garden[] | null>(null);
+import { Plant } from "@greenmate/contract/src/types/plant";
+import { PlantTypeFilterGroup } from "../../components/PlantTypeFilterGroup/PlantTypeFilterGroup";
 
 export const HomePage = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
-  const [searchValue, setSearchValue] = useState<string>();
-  const [gardens, setGardens] = useState<garden[]>([]);
-  const [errorMessage, setErrorMessage] = useState();
+  // const [searchValue, setSearchValue] = useState<string>();
+  const [displayedPlants, setDisplayedPlants] = useState<Plant[]>(plants);
+  const [errorMessage] = useState();
   const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/plants", {
-        params: { search: searchValue, page: currentPage },
-        withCredentials: true,
-      });
-
-      setPlants(response.data.plants);
-      setGardens(response.data.gardens);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/plants", {
+          params: { page: currentPage },
+          withCredentials: true,
+        });
+
+        setPlants(response.data.plants);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     fetchData();
-  }, [searchValue]);
+  }, []);
 
   return (
-    <GardenContext.Provider value={gardens}>
-      <HeaderCover setSearchValue={setSearchValue} />
+    <>
+      <div className={styles.coverWithFilters}>
+        <HeaderCover />
+        <PlantTypeFilterGroup
+          allPlants={plants}
+          setDisplayedPlants={setDisplayedPlants}
+        />
+      </div>
 
       <div className={styles.homePageContainer}>
         <PageNumberNavigation
@@ -44,14 +46,14 @@ export const HomePage = () => {
           setCurrentPage={setCurrentPage}
         />
 
-        {!plants ? (
+        {!displayedPlants ? (
           <div className={styles.errorMessage}>
             {errorMessage} <img src="no-result-found.svg" alt="logo" />
           </div>
         ) : (
-          <PlantsList plants={plants} />
+          <PlantsList plants={displayedPlants} />
         )}
       </div>
-    </GardenContext.Provider>
+    </>
   );
 };

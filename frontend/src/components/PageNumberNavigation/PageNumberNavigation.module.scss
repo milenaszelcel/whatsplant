@@ -1,21 +1,30 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .pagesNavigator {
   display: flex;
   flex-direction: row;
   align-self: end;
   gap: 16px;
-  color: $softGray;
-
-  max-width: 200px;
+  color: $white;
+  max-width: 300px;
+  justify-content: center;
+  align-items: center;
   padding: 32px;
+}
+
+.pageNumber {
+  padding: 8px;
 }
 
 .activePage {
   text-decoration: underline;
   cursor: pointer;
+  background-color: rgba($white, 0.4);
+  padding: 8px;
+  border-radius: 20px;
 }
 
-.pageNumber {
+.pageNumber,
+.controlArrow {
   cursor: pointer;
 }

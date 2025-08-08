@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
-import type { Plant as IPlant } from "@greenmate/contract";
 
-const plantSchema = new Schema<IPlant>({
+const plantSchema = new Schema({
   id: {
     type: Number,
     required: true,
@@ -16,6 +15,10 @@ const plantSchema = new Schema<IPlant>({
     required: true,
     unique: true,
   },
+  indoor: {
+    type: Boolean,
+    required: true,
+  },
   otherName: {
     type: String,
     required: false,
@@ -26,6 +29,7 @@ const plantSchema = new Schema<IPlant>({
     required: false,
     unique: false,
   },
+
   sunlight: {
     type: String,
     required: false,
@@ -43,5 +47,5 @@ plantSchema.index({
   commonName: "text",
   otherName: "text",
 });
-const Plant = model<IPlant>("Plants", plantSchema);
+const Plant = model("Plants", plantSchema);
 export default Plant;

@@ -35,21 +35,21 @@
 
 .headText {
   @include largeText;
-  color: $softGray;
+  color: $white;
   text-align: center;
 }
 
 .formField {
   @include regularText;
   background-color: rgba(30, 64, 19, 0.4);
-  color: $softGray;
+  color: $white;
   padding: 8px;
   border-radius: 0px 20px 20px 0px;
   width: 100%;
   border-color: transparent;
 }
 .formField::placeholder {
-  color: $gray;
+  color: $grey;
 }
 
 .formFieldWithIcon {

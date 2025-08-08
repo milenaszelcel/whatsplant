@@ -1,0 +1,45 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding: 128px;
+  justify-content: space-between;
+  background: linear-gradient(0deg, #030503 0%, #030503 100%),
+    linear-gradient(
+      180deg,
+      rgba(33, 70, 21, 0.2) 0%,
+      rgba(30, 64, 19, 0.2) 47.5%,
+      rgba(0, 0, 0, 0.2) 100%
+    ),
+    #030503;
+  @include mediumText;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.navLink {
+  color: $white;
+  text-decoration: none;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.socialLinks {
+  @include veryLargeText;
+  display: flex;
+
+  gap: 32px;
+}
+.socialIcon {
+  color: $white;
+}

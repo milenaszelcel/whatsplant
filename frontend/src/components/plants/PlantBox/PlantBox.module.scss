@@ -1,20 +1,22 @@
-@import "../../../styles/variables";
-
-.plantImage {
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 40px 0px 0px 40px;
-}
+@use "../../../styles/variables" as *;
 
 .plantBox {
-  background-color: $softGray;
-  border-radius: 40px;
+  background-color: rgba($white, 0.2);
+  border-radius: 20%;
   display: flex;
-  width: 80vw;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  background-color: $darkGreen;
+  width: 25vw;
   height: 30vw;
-  max-width: 100%;
-  position: relative;
+}
+.plantImage {
+  width: 90%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 25%;
+  padding: 16px;
 }
 
 .button {
@@ -27,11 +29,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 64px;
-  width: 50%;
 }
 .plantHeader {
-  background-color: $darkGreen;
   padding: 32px 0px;
   width: 100%;
   border-radius: 0px 40px 0px 0px;
@@ -41,7 +40,7 @@
 .commonName {
   @include largeText;
   text-wrap: wrap;
-  color: $softGray;
+  color: $white;
 }
 
 .scientificName {
@@ -53,10 +52,10 @@
 .plantDetails {
   @include regularText;
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
-
+  color: $white;
   gap: 32px;
 }
 

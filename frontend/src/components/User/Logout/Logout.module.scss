@@ -1,9 +1,9 @@
-@import "../../../styles/variables";
+@use "../../../styles/variables" as *;
 
 .logoutButton {
   background-color: transparent;
   border: none;
-  color: $softGray;
+  color: $white;
   padding: 4px;
 }
 .logoutIcon {

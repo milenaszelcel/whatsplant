@@ -1,15 +1,17 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .loginContainer {
+  position: relative;
   display: flex;
   background-color: rgba(247, 243, 243, 0.1);
   align-items: center;
+
   flex-direction: column;
   border-radius: 20px;
   padding: 92px;
   gap: 64px;
   @include regularText;
-  color: $softGray;
+  color: $white;
 }
 
 .siginRedirection {
@@ -22,8 +24,19 @@
 
 .loginPage {
   display: flex;
-  padding-top: 182px;
+
   align-items: center;
   flex-direction: column;
   gap: 64px;
+}
+
+.errorMessage {
+  background-color: rgba(255, 0, 0, 0.46);
+  width: 100%;
+  @include regularText;
+  position: absolute;
+  text-align: center;
+  padding: 16px 0px;
+  top: 0px;
+  border-radius: 20px 20px 0px 0px;
 }

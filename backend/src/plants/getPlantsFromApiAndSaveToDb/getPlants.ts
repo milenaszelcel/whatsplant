@@ -2,6 +2,7 @@ import { addPlantToDb } from "./addPlantToDb";
 import { getPlantsData } from "./getPlantsData";
 import helpfulVariables from "../../schemas/helpfulVariablesSchema";
 import { plantValidationSchema, type ApiPlant } from "@greenmate/contract";
+import { getSinglePlantById } from "./getSinglePlantById";
 
 type PlantData = { apiPlant: ApiPlant; page: number };
 
@@ -43,11 +44,13 @@ async function* getAllPlants(): AsyncIterable<PlantData> {
 
   while (isNextPage === true) {
     const data = await getPlantsData(page);
+
     if (data["last_page"] >= page) {
       page += 1;
 
       for (const item of data["data"]) {
-        const apiPlant = await plantValidationSchema.validateAsync(item);
+        const plantData = await getSinglePlantById(item["id"]);
+        const apiPlant = await plantValidationSchema.validateAsync(plantData);
         console.log(apiPlant);
         if (apiPlant.id > lastId) {
           yield { apiPlant, page };

@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .gardenName {
   font-size: 2.2rem;
@@ -19,5 +19,4 @@
   flex-direction: column;
   align-items: center;
   gap: 32px;
-  padding-top: 200px;
 }

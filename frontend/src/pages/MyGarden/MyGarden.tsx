@@ -1,17 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import axios from "axios";
-import { garden } from "../../contract/src/types/garden";
+
 import styles from "./MyGarden.module.scss";
 import { GardenList } from "../../components/Gardens/GardenList/GardenList";
 import { Link, useNavigate } from "react-router-dom";
-import { FieldWithButtonForm } from "../../components/FieldWithButtonForm/FieldWithButtonForm";
-import SearchIcon from "@mui/icons-material/Search";
+
 import { AuthContext } from "../../contexts/AuthContext";
+import type { GardenObject } from "@greenmate/contract";
 
 export const MyGarden = () => {
   const navigate = useNavigate();
-  const [gardens, setGardens] = useState<garden[]>();
+  const [gardens, setGardens] = useState<GardenObject[]>();
   const user = useContext(AuthContext);
 
   useEffect(() => {
@@ -23,6 +23,7 @@ export const MyGarden = () => {
         setGardens(response.data);
       } catch (error) {
         console.log(error);
+        window.location.reload();
         navigate("/");
       }
     };
@@ -36,24 +37,20 @@ export const MyGarden = () => {
     </div>
   ) : (
     <div className={styles.gardenContainer}>
-      <div className={styles.gardensActionHeader}>
+      <div>
         <div className={styles.myGardenText}>
           Check what's up in your{" "}
           <span className={styles.golden}>gardens!</span>
         </div>
+
         <div className={styles.actionButtons}>
-          <FieldWithButtonForm
-            icon={<SearchIcon />}
-            handleSubmit={() => {}}
-            placeHolder="Type name of garden..."
-            name="searchValue"
-            initialValues={{ searchValue: "" }}
-          />
           <Link to="/myGarden/create" className={styles.addButton}>
             <AddIcon fontSize="large" />
+            <div>Add</div>
           </Link>
         </div>
       </div>
+
       <div className={styles.gardenContentContainer}>
         {gardens?.length ? (
           <GardenList gardens={gardens} />

@@ -6,4 +6,5 @@ export type Plant = {
   watering: "frequent" | "average" | "minimum" | "none";
   sunlight: "full_shade" | "part_shade" | "sun-part_shade" | "full_sun";
   img?: string;
+  indoor: boolean;
 };

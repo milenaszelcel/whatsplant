@@ -1,15 +1,15 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .punia {
   text-align: justify;
   width: 20vw;
   font-style: italic;
-  color: $softGray;
+  color: $white;
 }
 
 .title {
   font-size: 1rem;
-  color: $softGray;
+  color: $white;
 }
 
 .wiersz {

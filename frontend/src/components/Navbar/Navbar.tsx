@@ -2,13 +2,20 @@ import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.scss";
 import classNames from "classnames";
 import { Logout } from "../User/Logout/Logout";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
 
-export const Navbar = () => {
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import Icon from "../../assets/icon.svg?react";
+import Logo from "../../assets/logo.svg?react";
+
+type Props = {
+  color: boolean;
+  setColor: (color: boolean) => void;
+};
+
+export const Navbar = ({ color, setColor }: Props) => {
   const { user } = useContext(AuthContext);
-  const [color, setColor] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -37,7 +44,8 @@ export const Navbar = () => {
             classNames(styles.navLink, { [styles.active]: isActive })
           }
         >
-          <img src="icon.svg" alt="logo" className={styles.logo} />
+          <Logo className={styles.logo} />
+          <Icon className={styles.icon} />
         </NavLink>
 
         <div className={styles.navigationMenu}>

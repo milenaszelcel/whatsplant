@@ -1,4 +1,4 @@
-import { MaterialIcon } from "material-icons";
+import type { MaterialIcon } from "material-icons";
 
 type Props = {
   icon: MaterialIcon;

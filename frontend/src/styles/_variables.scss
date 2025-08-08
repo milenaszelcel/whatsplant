@@ -1,16 +1,15 @@
-$fontFamily: "Playfair Display", serif;
+$fontFamily: "Poppins", sans-serif;
 
 // texts
 @mixin hugeText {
-  font-size: 96px;
+  font-size: 128px;
   font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 1px;
+  font-weight: 800;
+  line-height: 110.344%;
 }
 
 @mixin veryLargeText {
-  font-size: 72px;
+  font-size: 2.8rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
@@ -18,7 +17,7 @@ $fontFamily: "Playfair Display", serif;
 }
 
 @mixin largeText {
-  font-size: 40px;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -26,7 +25,7 @@ $fontFamily: "Playfair Display", serif;
 }
 
 @mixin mediumText {
-  font-size: 28px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -34,17 +33,26 @@ $fontFamily: "Playfair Display", serif;
 }
 
 @mixin regularText {
-  font-size: 18px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
   letter-spacing: 1px;
 }
 
+@mixin boldText {
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+}
 // colors
 $black: #000;
-$darkGreen: #1f3617;
-$green: #214615;
+$darkGreen: #577456;
+$green: #2c5120;
 $gold: #efb000;
-$softGray: #f7f3f3;
-$gray: #c9c9c9;
+$white: #f7f3f3;
+$softgrey: #c9c9c9;
+$grey: #d3d0d0dd;
+$red: #a82121;
+$lightGreen: #577456;
+$lightYellow: #efefdc;

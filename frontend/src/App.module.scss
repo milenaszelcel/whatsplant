@@ -1,1 +1,10 @@
-@import "styles/_variables.scss";
+@use "./styles/variables" as *;
+
+.paddingForNavbar {
+  padding-top: 128px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}

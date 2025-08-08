@@ -1,8 +1,8 @@
-@import "../../../styles/variables";
+@use "../../../styles/variables" as *;
 
 .gardenBox {
   padding: 24px;
-  background-color: $softGray;
+  background-color: $white;
   border-radius: 20px;
   box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 1.6rem;
@@ -14,12 +14,12 @@
   background-color: $darkGreen;
   transition: 0.2s ease-out;
   cursor: pointer;
-  color: $softGray;
+  color: $white;
 }
 
 .active {
   background-color: $darkGreen;
-  color: $softGray;
+  color: $white;
 }
 
 .successBox {

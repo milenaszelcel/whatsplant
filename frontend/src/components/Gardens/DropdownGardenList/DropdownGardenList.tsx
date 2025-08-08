@@ -1,9 +1,9 @@
 import axios from "axios";
-import { garden } from "../../../contract/src/types/garden";
 import { GardenItem } from "../GardenItem/GardenItem";
 import styles from "./DropdownGardenList.module.scss";
 import { useContext } from "react";
-import { GardenContext } from "../../../pages/HomePage/HomePage";
+import { GardenContext } from "../../../contexts/GardenContext";
+import type { Garden } from "@greenmate/contract";
 
 type Props = {
   plantId: number;
@@ -11,13 +11,8 @@ type Props = {
 
 export const DropdownGardenList = ({ plantId }: Props) => {
   const gardens = useContext(GardenContext);
-  const handleClick = async (garden: garden) => {
+  const handleClick = async (garden: Garden) => {
     try {
-      const response = await axios.post(
-        `http://localhost:3001/garden/${garden._id}/plants/${plantId}`,
-        { plantId: plantId, gardenName: garden.name },
-        { withCredentials: true }
-      );
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const errorMsg =

@@ -1,4 +1,4 @@
-@import "../../../styles/variables";
+@use "../../../styles/variables" as *;
 
 .form {
   display: flex;
@@ -10,7 +10,7 @@
 .field {
   padding: 16px;
   border-radius: 20px;
-  border-color: $softGray;
+  border-color: $white;
   @include regularText;
 }
 
@@ -23,7 +23,7 @@
 .submitButton {
   background-color: $darkGreen;
   padding: 16px;
-  color: $softGray;
+  color: $white;
   border-radius: 20px;
   border: none;
   @include mediumText;

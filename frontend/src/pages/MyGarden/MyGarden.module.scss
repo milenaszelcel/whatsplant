@@ -1,17 +1,16 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .gardenContainer {
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  padding-top: 128px;
-  height: 100vh;
+  gap: 32px;
+  padding: 16px 64px;
 }
 
 .myGardenText {
-  color: $softGray;
+  color: $white;
   text-align: center;
-  font-size: 3rem;
+  @include largeText;
 }
 
 .golden {
@@ -42,14 +41,22 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  @include mediumText;
 }
 
 .addButton {
-  background-color: $darkGreen;
+  background-color: $green;
   color: $gold;
   border-radius: 20px;
-  padding: 12px;
+  padding: 16px;
   display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.addButton:hover {
+  background-color: $gold;
+  color: $darkGreen;
 }
 
 .mainGardenContainer {

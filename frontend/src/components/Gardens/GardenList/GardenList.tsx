@@ -1,18 +1,16 @@
-import axios from "axios";
-import { garden } from "../../../contract/src/types/garden";
 import { GardenItem } from "../GardenItem/GardenItem";
 import styles from "./GardenList.module.scss";
 import { Link, redirect } from "react-router-dom";
+import type { GardenObject } from "@greenmate/contract";
 
 type Props = {
-  gardens: Array<garden>;
+  gardens: Array<GardenObject>;
 };
 
 export const GardenList = ({ gardens }: Props) => {
-  const handleClick = (id: garden["_id"]) => {
-    redirect("=id");
+  const handleClick = (id: GardenObject["_id"]) => {
+    redirect(`=${id}`);
   };
-
   return (
     <div className={styles.gardenList}>
       {gardens.map((garden) => (

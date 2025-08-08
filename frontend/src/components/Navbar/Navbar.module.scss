@@ -1,32 +1,8 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .header {
-  padding: 16px 0px;
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-  transition: 0.1s ease-in;
-  background: linear-gradient(
-      0deg,
-      rgba(33, 70, 21, 0.2) 0%,
-      rgba(30, 64, 19, 0.2) 47.5%
-    ),
-    #030503;
-}
-
-.header.black {
-  background: linear-gradient(
-      0deg,
-      rgba(33, 70, 21, 0.2) 0%,
-      rgba(30, 64, 19, 0.2) 47.5%
-    ),
-    #030503;
-}
-
-@media (min-width: 1444px) {
-  .header {
-    background: none;
-  }
+  padding: 8px;
+  background-color: $lightGreen;
 }
 
 .headerContent {
@@ -36,7 +12,7 @@
   align-items: center;
 }
 .navLink {
-  color: $softGray;
+  color: $white;
   text-decoration: none;
   @include mediumText;
   text-underline-offset: 0.4rem;
@@ -62,9 +38,11 @@
   gap: 16px;
   align-items: center;
   justify-content: center;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 .rightMenu:hover {
   background-color: $green;
+  transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 
@@ -74,11 +52,31 @@
 
 .line {
   height: 2vw;
-  color: $softGray;
-  border: 1px solid $softGray;
+  color: $white;
+  border: 1px solid $white;
 }
 
 .logo {
+  display: none;
   align-self: flex-start;
   justify-self: flex-start;
+  width: 180px;
+  height: 60px;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  fill: $white;
+  align-self: flex-start;
+  justify-self: flex-start;
+}
+
+@media (min-width: 1444px) {
+  .logo {
+    display: block;
+  }
+  .icon {
+    display: none;
+  }
 }

@@ -1,7 +1,6 @@
-import type { GardenObject } from "@greenmate/contract";
 import { model, Schema } from "mongoose";
 
-const gardenSchema = new Schema<GardenObject>({
+const gardenSchema = new Schema({
   name: {
     type: String,
     required: false,

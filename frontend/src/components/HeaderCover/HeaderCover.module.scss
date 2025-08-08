@@ -1,29 +1,49 @@
-@import "../../styles/variables";
-
-.cover {
-  width: 100vw;
-  max-width: 100%;
-}
-
-.gold {
-  color: $gold;
-}
-
-.coverText {
-  color: $softGray;
-  @include hugeText;
-  max-width: 60%;
-}
+@use "../../styles/variables" as *;
 
 .coverContainer {
-  position: relative;
+  background-color: $lightGreen;
+  height: 80vh;
+  padding: 0px 82px;
+  border-radius: 0px 0px 128px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 82px;
 }
 
-.coverContent {
+.text {
+  color: $lightYellow;
+  @include hugeText;
+}
+
+.imageBox {
+  position: relative;
+  width: 60vw;
+  height: 25vw;
+}
+
+.archBackground {
   position: absolute;
-  padding: 32px;
-  bottom: 50vh;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  aspect-ratio: 2 / 1;
+
+  border-radius: 999px 999px 0 0;
+  background-color: rgba(233, 234, 180, 0.5);
+
+  z-index: 1;
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  object-fit: cover;
+  left: 50%;
+  width: 100%;
+
+  transform: translateX(-50%) translateY(34%);
+  z-index: 2;
 }

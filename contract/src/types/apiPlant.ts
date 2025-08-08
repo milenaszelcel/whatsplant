@@ -3,6 +3,7 @@ export type ApiPlant = {
   common_name: string;
   scientific_name: string[];
   other_name: string[];
+  indoor: boolean;
   watering:
     | "frequent"
     | "average"

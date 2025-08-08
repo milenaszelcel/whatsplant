@@ -1,10 +1,11 @@
-import { FormikValues } from "formik";
-import { registerValidationSchema } from "../../../contract/src/schemas/registerSchema";
+import type { FormikValues } from "formik";
+
 import axios from "axios";
 import { UserForm } from "../UserForm/UserForm";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import styles from "../LoginRegistration.module.scss";
+import { registerValidationSchema } from "@greenmate/contract";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -14,11 +15,9 @@ export const Register = () => {
       const validatedValue = await registerValidationSchema.validateAsync(
         values
       );
-      const response = await axios.post(
-        "http://localhost:3001/users/",
-        validatedValue,
-        { withCredentials: true }
-      );
+      await axios.post("http://localhost:3001/users/", validatedValue, {
+        withCredentials: true,
+      });
 
       navigate("/");
       window.location.reload();

@@ -1,35 +1,17 @@
-import { useState } from "react";
-import { garden } from "../../../contract/src/types/garden";
 import styles from "./GardenItem.module.scss";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import classNames from "classnames";
+
+import { GardenObject } from "@greenmate/contract";
+import GardenDefault from "../../../assets/gardenDefault.svg?react";
 
 type Props = {
-  garden: garden;
-  handleClick: () => void;
+  garden: GardenObject;
 };
 
-export const GardenItem = ({ garden, handleClick }: Props) => {
-  const [isActive, setIsActive] = useState(false);
-
-  const onClick = () => {
-    setIsActive(true);
-    handleClick();
-  };
-
+export const GardenItem = ({ garden }: Props) => {
   return (
-    <div
-      className={classNames(styles.gardenBox, { [styles.active]: isActive })}
-      onClick={onClick}
-    >
-      {isActive ? (
-        <div className={styles.successBox}>
-          <CheckCircleOutlineIcon />
-          <div>Succesfully added</div>
-        </div>
-      ) : (
-        <div>{garden.name}</div>
-      )}
+    <div className={styles.gardenBox}>
+      <div>{garden.name}</div>
+      <GardenDefault />
     </div>
   );
 };

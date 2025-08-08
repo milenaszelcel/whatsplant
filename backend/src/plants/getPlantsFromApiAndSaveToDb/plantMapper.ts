@@ -9,15 +9,17 @@ export const createPlant = (apiPlant: ApiPlant) => {
   const watering = apiPlant["watering"];
   const sunlight = apiPlant["sunlight"][0];
   const img = apiPlant["default_image"]?.["original_url"];
+  const indoor = apiPlant["indoor"] || false;
 
   const newPlant = new Plant({
-    id: id,
-    commonName: commonName,
-    scientificName: scientificName,
-    otherName: otherName,
-    watering: watering,
-    sunlight: sunlight,
-    img: img,
+    id,
+    commonName,
+    scientificName,
+    otherName,
+    watering,
+    sunlight,
+    img,
+    indoor,
   });
   return newPlant;
 };
