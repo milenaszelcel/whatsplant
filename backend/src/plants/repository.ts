@@ -8,12 +8,18 @@ export const getListOfPlants = async (
   filter: Filter,
   pagination: Pagination
 ) => {
-  const plants = await Plant.find({
-    ...(filter.search && { $text: { $search: filter.search } }),
-  })
+  const queryCondition = filter.search
+    ? { $text: { $search: filter.search } }
+    : {};
+
+  const countPromise = Plant.countDocuments(queryCondition);
+
+  const dataPromise = Plant.find(queryCondition)
     .sort({ id: 1 })
     .limit(pagination.perPage)
     .skip((pagination.page - 1) * pagination.perPage);
 
-  return plants;
+  const [total, plants] = await Promise.all([countPromise, dataPromise]);
+
+  return { plants, total };
 };

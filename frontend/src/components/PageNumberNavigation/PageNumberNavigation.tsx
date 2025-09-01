@@ -3,47 +3,69 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import styles from "./PageNumberNavigation.module.scss";
+
 type Props = {
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  pageCount: number;
 };
 
 export const PageNumberNavigation = ({
   currentPage,
   setCurrentPage,
+  pageCount,
 }: Props) => {
   const [pages, setPages] = useState<number[]>([]);
 
+  useEffect(() => {
+    const handlePageChange = () => {
+      if (pageCount <= 0) {
+        setPages([]);
+        return;
+      }
+      const pagesToShow = 5;
+      let startPage = Math.max(1, currentPage - 2);
+
+      if (startPage + pagesToShow - 1 > pageCount) {
+        startPage = Math.max(1, pageCount - pagesToShow + 1);
+      }
+      const generatedPages = Array.from(
+        { length: Math.min(pagesToShow, pageCount - startPage + 1) },
+        (_, i) => startPage + i
+      );
+      setPages(generatedPages);
+    };
+
+    handlePageChange();
+  }, [currentPage, pageCount]);
+
   const changePage = (change: number) => {
     setCurrentPage((prevPage: number) => {
-      const newCount = prevPage + change;
-      return newCount >= 1 ? newCount : prevPage;
+      const newPage = prevPage + change;
+      // Check both lower and upper boundaries
+      if (newPage >= 1 && newPage <= pageCount) {
+        return newPage;
+      }
+      return prevPage;
     });
   };
 
-  useEffect(() => {
-    const handlePageChange = () => {
-      if (
-        !pages.length ||
-        pages[pages.length - 1] - currentPage < 1 ||
-        pages[1] > currentPage
-      ) {
-        const startPage = Math.max(1, currentPage - 2);
-        const generatedPages = Array.from(
-          { length: 5 },
-          (_, i) => startPage + i
-        );
-        setPages(generatedPages);
-      }
-    };
-    handlePageChange();
-  }, [currentPage]);
+  if (pageCount <= 1) {
+    return null;
+  }
 
   return (
     <div className={styles.pagesNavigator}>
-      <span onClick={() => changePage(-1)} className={styles.navigationArrow}>
+      {/* Add a disabled state for better UX and safety */}
+      <span
+        onClick={() => currentPage > 1 && changePage(-1)}
+        className={
+          currentPage > 1 ? styles.navigationArrow : styles.disabledArrow
+        }
+      >
         <ArrowBackIosIcon className={styles.controlArrow} />
       </span>
+
       {pages.map((page) => (
         <span
           key={page}
@@ -55,7 +77,15 @@ export const PageNumberNavigation = ({
           {page}
         </span>
       ))}
-      <span onClick={() => changePage(1)} className={styles.navigationArrow}>
+
+      <span
+        onClick={() => currentPage < pageCount && changePage(1)}
+        className={
+          currentPage < pageCount
+            ? styles.navigationArrow
+            : styles.disabledArrow
+        }
+      >
         <ArrowForwardIosIcon className={styles.controlArrow} />
       </span>
     </div>

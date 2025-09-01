@@ -7,12 +7,15 @@ import { PageNumberNavigation } from "../../components/PageNumberNavigation/Page
 import { Plant } from "@greenmate/contract/src/types/plant";
 import { PlantTypeFilterGroup } from "../../components/PlantTypeFilterGroup/PlantTypeFilterGroup";
 
+const ITEMS_PER_PAGE = Number(import.meta.env.VITE_ITEMS_PER_PAGE) || 50;
+
 export const HomePage = () => {
   const [plants, setPlants] = useState<Plant[]>([]);
   // const [searchValue, setSearchValue] = useState<string>();
   const [displayedPlants, setDisplayedPlants] = useState<Plant[]>(plants);
-  const [errorMessage] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,13 +25,22 @@ export const HomePage = () => {
           withCredentials: true,
         });
 
+        const total = response.data.totalPlants;
+        const totalPages = total ? Math.ceil(total / ITEMS_PER_PAGE) : 0;
+
         setPlants(response.data.plants);
+        setPageCount(totalPages);
       } catch (error) {
         console.log(error);
+        setErrorMessage("Failed to load plants. Please try again later.");
       }
     };
     fetchData();
-  }, []);
+  }, [currentPage]);
+
+  useEffect(() => {
+    setDisplayedPlants(plants);
+  }, [plants]);
 
   return (
     <>
@@ -42,6 +54,7 @@ export const HomePage = () => {
 
       <div className={styles.homePageContainer}>
         <PageNumberNavigation
+          pageCount={pageCount}
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />

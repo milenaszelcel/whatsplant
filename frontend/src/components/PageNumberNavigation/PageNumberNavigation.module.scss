@@ -8,18 +8,22 @@
   color: $white;
   max-width: 300px;
   justify-content: center;
+  background-color: $darkGreen;
   align-items: center;
-  padding: 32px;
+  border-radius: 82px;
+  padding: 16px;
+  @include mediumText;
+  @include softBoldText;
 }
 
 .pageNumber {
-  padding: 8px;
+  padding: 4px;
 }
 
 .activePage {
-  text-decoration: underline;
+  color: $black;
   cursor: pointer;
-  background-color: rgba($white, 0.4);
+  background-color: $white;
   padding: 8px;
   border-radius: 20px;
 }
