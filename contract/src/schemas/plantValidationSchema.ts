@@ -7,6 +7,7 @@ export const plantValidationSchema = Joi.object({
   scientific_name: Joi.array().items(Joi.string()).required(),
   other_name: Joi.array().items(Joi.string()).required(),
   indoor: Joi.boolean().required(),
+  description: Joi.string(),
   watering: Joi.string()
     .insensitive()
     .trim()

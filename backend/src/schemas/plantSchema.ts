@@ -24,6 +24,10 @@ const plantSchema = new Schema({
     required: false,
     unique: false,
   },
+  description: {
+    type: String,
+    required: false,
+  },
   watering: {
     type: String,
     required: false,

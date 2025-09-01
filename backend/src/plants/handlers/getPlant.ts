@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import Plant from "../../../src/schemas/plantSchema";
+import Plant from "../../schemas/plantSchema";
 
 export const getPlant = async (req: Request, res: Response) => {
   const plantId = req.query.plantId;

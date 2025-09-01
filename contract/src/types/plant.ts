@@ -7,4 +7,5 @@ export type Plant = {
   sunlight: "full_shade" | "part_shade" | "sun-part_shade" | "full_sun";
   img?: string;
   indoor: boolean;
+  description: string;
 };

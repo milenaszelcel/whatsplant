@@ -8,8 +8,9 @@ export const createPlant = (apiPlant: ApiPlant) => {
   const otherName = apiPlant["other_name"][0];
   const watering = apiPlant["watering"];
   const sunlight = apiPlant["sunlight"][0];
+  const description = apiPlant["description"];
   const img = apiPlant["default_image"]?.["original_url"];
-  const indoor = apiPlant["indoor"] || false;
+  const indoor = apiPlant["indoor"];
 
   const newPlant = new Plant({
     id,
@@ -18,6 +19,7 @@ export const createPlant = (apiPlant: ApiPlant) => {
     otherName,
     watering,
     sunlight,
+    description,
     img,
     indoor,
   });
